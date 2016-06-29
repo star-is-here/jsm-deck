@@ -1,0 +1,8 @@
+data/raster/*
+data/vector/planet/*
+*.geojson
+*.tgz
+*.sublime-workspace
+*.sublime-project
+*.zip
+node_modules/*

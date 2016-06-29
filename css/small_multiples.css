@@ -1,0 +1,7 @@
+<style type="text/css">
+    #map1, #map2, #map3, #map4 { width: 49.5%; height: 49.5%; }
+    #map1 { position: absolute; left: 0; top: 0; }
+    #map2 { position: absolute; right: 0%; top: 0; }
+    #map3 { position: absolute; left: 0; bottom: 0%; }
+    #map4 { position: absolute; right: 0%; bottom: 0%; }
+</style>

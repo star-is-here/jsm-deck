@@ -1,0 +1,196 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>JSM Deck</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/custom.css">
+		<link rel="stylesheet" type="text/css" href="js/leaflet/leaflet.css">
+		<link rel="stylesheet" type="text/css" href="css/parallel_coord.css">
+		<link rel="stylesheet" type="text/css" href="css/small_multiples.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<script src="http://d3js.org/d3.v3.min.js"></script>
+		<script src="js/dygraph-combined.js"></script>
+		<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script> -->
+		<script src="https://code.jquery.com/jquery-3.0.0.min.js" integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0=" crossorigin="anonymous"></script>
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>JSM Deck</h1>
+					<h2>*Working Draft*</h2>	
+				</section>
+				<section>
+					<p>There is a lot of missing data, even for well established indicators/indexes</p>
+					<p>Especially in the social and education arena</p>
+					<p>Also very costly to create</p>
+				</section>
+				<section>
+					<p>Literacy rates of 15-24 years old, both sexes, percentage</p>
+					<div id="coord"></div>
+					<script src="js/parallel_coord.js"></script>
+					<p>MDG Indicators only capture if a nation is succeeding or failing, not suggest policy interventions that may help or where to help</p>
+				</section>
+				<section>
+					<p>Gender Parity Index in primary level enrolment</p>
+					<iframe src="small_multiples.html" style="width:900px; height:500px;"></iframe>
+				</section>
+				<section>
+					<p>We can use data visualizations of existing indicators to determine where nations are falling behind</p>
+					<p>Want to supplement existing indicators with data from instruments that allow us make intervention points</p>
+				</section>
+				<section>
+					<!-- <img src="data/image/China/china.gif" style="width:250px">
+					<img src="data/image/Bangladesh/bangladesh.gif" style="width:250px">
+					<img src="data/image/Japan/Fukushima.gif" style="width:250px">
+					<img src="data/image/Vietnam/vietnam.gif" style="width:250px"> -->
+					<p>Example: Using Satellite imagery in conjunction with MDG Indicators</p>
+					<p>North Korea vs South Korea</p>
+					<img src="data/image/North Korea/north-korea.gif" style="width:350px">
+					<img src="data/image/South Korea/south-korea.gif" style="width:350px">
+				</section>
+				<section>
+					<p>Monthly Average Radiance Levels of various Asian Nations from 2014 to present</p>
+					<div id="timeseries" style="width:900px; height:300px; text-align:center"></div>
+					<script type="text/javascript">
+					  g2 = new Dygraph(
+					    document.getElementById("timeseries"),
+					    "data/time_series.csv", // path to CSV file
+					    {
+					    	rollPeriod: 2,
+					    	// labels: ['Month','China','N.Korea','S.Korea','Bangladesh','India','Japan','Taiwan','Thailand','Vietnam'],
+					    	series: {
+					    		'china': {color: '#16a085'},
+					    		'north-korea': {color: '#e67e22'},
+					    		'south-korea': {color: '#27ae60'},
+					    		'bangladesh': {color: '#2c3e50'},
+					    		'india': {color: '#2980b9'},
+					    		'japan': {color: '#c0392b'},
+					    		'taiwan': {color: '#f1c40f'},
+					    		'thailand': {color: '#8e44ad'},
+					    		'vietnam': {color: '#9b59b6'}
+					    	},
+				            legend: 'always',
+				            labelsDivStyles: { 'textAlign': 'right' },
+				            showRangeSelector: true,
+				            rangeSelectorHeight: 30,
+				            rangeSelectorPlotStrokeColor: '#2c3e50',
+				            rangeSelectorPlotFillColor: '#95a5a6'
+					    	// showRoller: true
+					    }          // options
+					  );
+					  $(document).ready(function () { 
+					        g2.resize(900, 300)
+					    }); // Get the graph to appear
+					</script>
+				</section>
+				<section>
+					<p>Monthly Average Radiance Levels of North Korean Provinces from 2014 to present</p>
+					<div id="timeseries_nk" style="width:900px; height:300px; text-align:center"></div>
+					<div id="timeseries_nk_legend" style="width:900px; font-size:18px;"></div>
+					<script type="text/javascript">
+					  g3 = new Dygraph(
+					    document.getElementById("timeseries_nk"),
+					    "data/time_series_nk.csv", // path to CSV file
+					    {
+					    	rollPeriod: 2,
+				            legend: 'always',
+				            labelsDiv: document.getElementById("timeseries_nk_legend"),
+				            labelsDivStyles: { 'textAlign': 'right' },
+				            showRangeSelector: true,
+				            rangeSelectorHeight: 30,
+				            rangeSelectorPlotStrokeColor: '#2c3e50',
+				            rangeSelectorPlotFillColor: '#95a5a6'
+					    	// showRoller: true
+					    }          // options
+					  );
+					  $(document).ready(function () { 
+					        g3.resize(900, 300)
+					    }); // Get the graph to appear
+					</script>
+				</section>
+				<section>
+					<p>Monthly Average Radiance Levels of North Korean Provinces from 2014 to present</p>
+					<div id="timeseries_kor" style="width:900px; height:300px; text-align:center"></div>
+					<div id="timeseries_kor_legend" style="width:900px; font-size:12px;"></div>
+					<script type="text/javascript">
+					  g4 = new Dygraph(
+					    document.getElementById("timeseries_kor"),
+					    "data/time_series_kor.csv", // path to CSV file
+					    {
+					    	rollPeriod: 2,
+				            legend: 'always',
+				            labelsDiv: document.getElementById("timeseries_kor_legend"),
+				            labelsDivStyles: { 'textAlign': 'right' },
+				            showRangeSelector: true,
+				            rangeSelectorHeight: 30,
+				            rangeSelectorPlotStrokeColor: '#2c3e50',
+				            rangeSelectorPlotFillColor: '#95a5a6'
+					    	// showRoller: true
+					    }          // options
+					  );
+					  $(document).ready(function () { 
+					        g4.resize(900, 300)
+					    }); // Get the graph to appear
+					</script>
+				</section>
+				<section>
+					<p>Visualizations/dashboarding is useful in for policy but it limited by the strength of the underlying data used</p>
+					<p>Especially in the arena of social or education issues which can be so costly</p>
+				</section>
+				<section>Slide 7</section>
+				<section>Slide 8</section>
+				<section>Slide 9</section>
+				<section>Slide 10</section>
+				<section>Slide 11</section>
+				<section>Slide 12</section>
+				<section>Slide 13</section>
+				<section>Slide 14</section>
+				<section>Slide 15</section>
+				<section>Slide 16</section>
+				<section>Slide 17</section>
+				<section>Slide 18</section>
+				<section>Slide 19</section>
+				<section>Slide 20</section>
+				<section>Slide 21</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+				controls: false,
+				progress: false,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
