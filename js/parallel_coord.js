@@ -16,7 +16,7 @@ var svg = d3.select("#coord").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-d3.csv("data/MDG656_even.csv", function(error, mdg) {
+d3.csv("data/MDG611_clean.csv", function(error, mdg) {
 
   // Extract the list of dimensions and create a scale for each.
   x.domain(dimensions = d3.keys(mdg[0]).filter(function(d) {
