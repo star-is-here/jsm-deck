@@ -6,7 +6,7 @@ var x = d3.scale.ordinal().rangePoints([0, width], 1),
     y = {};
 
 var line = d3.svg.line(),
-    axis = d3.svg.axis().orient("left"),
+    axis = d3.svg.axis().orient("left").tickFormat(""),
     background,
     foreground;
 
@@ -51,7 +51,7 @@ d3.csv("data/MDG611_clean.csv", function(error, mdg) {
   // Add an axis and title.
   g.append("g")
       .attr("class", "axis")
-      .each(function(d) { d3.select(this).call(axis.scale(y[d])); })
+      .each(function(d) { d3.select(this).call(axis.scale(y[2003])); })
     .append("text")
       .style("text-anchor", "middle")
       .attr("y", -9)

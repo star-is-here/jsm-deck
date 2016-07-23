@@ -6,16 +6,16 @@ var layer4 = L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.
 
 var map1 = L.map('map1', {
     layers: [layer1],
-    center: [43.935299,116.051414],
-    zoom: 2
+    center: [41.0082,28.9784],
+    zoom: 1
 });
 
 // map1.attributionControl.setPrefix('');
 
 var map2 = L.map('map2', {
     layers: [layer2],
-    center: [43.935299,116.051414],
-    zoom: 2,
+    center: [41.0082,28.9784],
+    zoom: 1,
     zoomControl: false
 });
 
@@ -23,8 +23,8 @@ var map2 = L.map('map2', {
 
 var map3 = L.map('map3', {
     layers: [layer3],
-    center: [43.935299,116.051414],
-    zoom: 2,
+    center: [41.0082,28.9784],
+    zoom: 1,
     zoomControl: false
 });
 
@@ -32,8 +32,8 @@ var map3 = L.map('map3', {
 
 var map4 = L.map('map4', {
     layers: [layer4],
-    center: [43.935299,116.051414],
-    zoom: 2,
+    center: [41.0082,28.9784],
+    zoom: 1,
     zoomControl: false
 });
 
@@ -43,10 +43,10 @@ var stateLayer1 = L.geoJson(null, {
   },
   style: function(feature, layer){
     return { 
-      fillColor: feature.properties.parity1 < 0.85 ? 'rgba(241, 196, 15,1.0)' : 'rgba(0,0,0,0.0)',
+      fillColor: feature.properties.parity1 < 0.85 ? 'rgba(236, 240, 241,'+feature.properties.parity1+')' : 'rgba(0,0,0,0.0)',
       color: 'rgb(46,204,113)',
       opacity: .5,
-      weight: 2,
+      weight: 0,
       fillOpacity: 1
      };
   }
@@ -58,10 +58,10 @@ var stateLayer2 = L.geoJson(null, {
   },
   style: function(feature, layer){
     return { 
-      fillColor: feature.properties.parity2 < 0.85 ? 'rgba(192, 57, 43,1.0)' : 'rgba(0,0,0,0.0)',
+      fillColor: feature.properties.parity2 < 0.85 ? 'rgba(44, 62, 80,'+feature.properties.parity2+')' : 'rgba(0,0,0,0.0)',
       color: 'rgb(142,68,173)',
       opacity: .5,
-      weight: 2,
+      weight: 0,
       fillOpacity: 1
      };
   }
@@ -73,10 +73,10 @@ var stateLayer3 = L.geoJson(null, {
   },
   style: function(feature, layer){
     return { 
-      fillColor: feature.properties.parity3 < 0.85 ? 'rgba(192, 57, 43,1.0)' : 'rgba(0,0,0,0.0)',
+      fillColor: feature.properties.parity3 < 0.85 ? 'rgba(44, 62, 80,'+feature.properties.parity3+')' : 'rgba(0,0,0,0.0)',
       color: 'rgb(52,152,219)',
       opacity: .5,
-      weight: 2,
+      weight: 0,
       fillOpacity: 1
      };
   }
@@ -88,10 +88,10 @@ var stateLayer4 = L.geoJson(null, {
   },
   style: function(feature, layer){
     return { 
-      fillColor: feature.properties.parity4 < 0.85 ? 'rgba(241, 196, 15,1.0)' : 'rgba(0,0,0,0.0)',
+      fillColor: feature.properties.parity4 < 0.85 ? 'rgba(236, 240, 241,'+feature.properties.parity4+')' : 'rgba(0,0,0,0.0)',
       color: 'rgb(241,204,113)',
       opacity: .5,
-      weight: 2,
+      weight: 0,
       fillOpacity: 1
      };
   }
