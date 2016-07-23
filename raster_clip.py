@@ -1,4 +1,4 @@
-import ujson as json, pprint, csv, numpy as np, rasterio, rasterio.features, fiona, matplotlib.pyplot as plt, os, seaborn as sns
+import ujson as json, pprint, csv, numpy as np, rasterio, rasterio.features, fiona, matplotlib.pyplot as plt, os, tarfile, gzip, glob, editdistance
 from affine import Affine
 from scipy.stats.mstats import mquantiles
 from shapely.geometry import shape
@@ -66,11 +66,11 @@ def clip_and_pull(vname, rdir, dumpCSV=False, dumpJSON=False, view=False):
     # pp.pprint(county)
     # save a copy
     if dumpJSON:
-        with open('%s.json'%vname, 'wb') as f:
+        with open('%s.json'%fname, 'wb') as f:
             json.dump(county, f)
 
     if dumpCSV:
-        with open('%s.csv'%rname, 'wb') as f:
+        with open('%s.csv'%fname, 'wb') as f:
             writeme = csv.writer(f)
             writeme.writerow(['Name', 'ID', 'Radiance'])
             for muni in county.keys():
@@ -88,10 +88,95 @@ def clip_and_pull(vname, rdir, dumpCSV=False, dumpJSON=False, view=False):
 
     return county
 
+def clip_and_pull_dmsp(vname, rname, dumpJSON=False, view=False):
+    country, video, name, planet = {}, [], [], []
+    year = rname[15:19]
+    satellite = rname[12:15]
+    with open(vname, 'r') as vector, rasterio.open(rname, 'r') as raster:
+        for feature in tqdm(json.load(vector)['features']):
+            if u'name:en' in feature['properties'].keys():
+                tqdm.write('Processing nation: %s'%feature['properties'][u'name:en'])
+                # pp.pprint(feature['properties'])
+                # create a shapely geometry
+                # this is done for the convenience for the .bounds property only
+                geometry = shape(feature['geometry'])
+                try:
+                    natname = feature['properties'][u'name:en']
+                except KeyError:
+                    natname = feature['properties'][u'name']
+                country = { 'name': natname, 'instrument': satellite }
+
+                # get pixel coordinates of the geometry's bounding box
+                ul = raster.index(*geometry.bounds[0:2])
+                lr = raster.index(*geometry.bounds[2:4])
+
+                # account for high north 
+                if lr[0] < 0:
+                    lr = (0, lr[1])
+
+                # read the subset of the data into a numpy array
+                window = ((lr[0], ul[0]+1), (ul[1], lr[1]+1))
+                data = raster.read(1, window=window)
+
+                # create an affine transform for the subset data
+                t = raster.affine
+                shifted_affine = Affine(t.a, t.b, t.c+ul[1]*t.a, t.d, t.e, t.f+lr[0]*t.e)
+
+                # rasterize the geometry
+                mask = rasterio.features.rasterize(
+                    [(geometry, 0)],
+                    out_shape=data.shape,
+                    transform=shifted_affine,
+                    fill=1,
+                    all_touched=True,
+                    dtype=np.uint8)
+
+                # create a masked numpy array
+                masked_data = np.ma.array(data=data, mask=mask.astype(bool))
+
+                # plot area to review
+                if view:
+                    name.append(natname)
+                    video.append(masked_data)
+
+                # calculate statistics at country level
+                country['sum'] = float(np.ma.sum(masked_data))
+                country['mean'] = float(np.ma.mean(masked_data))
+                country['std'] = float(np.ma.std(masked_data))
+                country['quantiles'] = [ float(x) for x in mquantiles(masked_data, prob=[0,0.05,.1, .2, 0.3,0.4,.5, 0.6,0.7, 0.8, 0.9,0.95, 1], alphap=1, betap=1).tolist() ]
+
+                planet.append(country)
+
+    # pp.pprint(country)
+    # save a copy
+    if dumpJSON:
+        with open('data/dmsp_timeseries.json', 'r') as f:
+            jfile = json.load(f)
+            jfile[year].extend(planet)
+        with open('data/dmsp_timeseries.json', 'w') as f:
+            json.dump(jfile, f)
+
+    if view:
+        plt.ion()
+        for i in range(len(video)):
+            plt.imsave('data/image/%s.jpg'%name[i], video[i], vmin=0, vmax=1, cmap='afmhot')
+            # plt.figure()
+            # plt.imshow(video[i], vmin=0, vmax=1, cmap='afmhot')
+            # plt.show()
+            # plt.pause(0.001)
+            # plt.close()
+
+    return planet
 
 if __name__=='__main__':
-    levels = [ 'admin_level_4.geojson', 'regions.geojson' ]
-    nations = [ 'china', 'north-korea', 'south-korea', 'bangladesh', 'india', 'japan', 'republic-of-china', 'thailand', 'vietnam' ]
+    ########################################################################################################################
+    # Define nations and admin levels
+    ########################################################################################################################
+    # levels = [ 'admin_level_4.geojson', 'regions.geojson' ]
+    # nations = [ 'china', 'north-korea', 'south-korea', 'bangladesh', 'india', 'japan', 'republic-of-china', 'thailand', 'vietnam' ]
+    ########################################################################################################################
+    # Process nations on VIIRS
+    ########################################################################################################################
     # final_csv = []
     # for nation in nations:
     #     # print 'Processing %s\n'%nation
@@ -129,23 +214,78 @@ if __name__=='__main__':
     #     writeme.writerow(['date'] + provinces)
     #     for row in zip(*final_csv):
     #         writeme.writerow(row)
-    parity = {}
-    with open('data/MDG611.csv', 'rb') as f:
-        reader = csv.reader(f)
-        for row in reader:
-            parity[unicode(row[1])] = row[24:28]
-    with open('data/vector/countries.geo.json', 'rb') as f:
-        planet = json.load(f)
-        for country in planet['features']:
-            try:
-                country['properties']['parity1'] = parity[country['properties']['name']][0]
-                country['properties']['parity2'] = parity[country['properties']['name']][1]
-                country['properties']['parity3'] = parity[country['properties']['name']][2]
-                country['properties']['parity4'] = parity[country['properties']['name']][3]
-            except KeyError:
-                country['properties']['parity1'] = None
-                country['properties']['parity2'] = None
-                country['properties']['parity3'] = None
-                country['properties']['parity4'] = None
-    with open('data/vector/countries_parity.geo.json', 'wb') as f:
-        json.dump(planet, f)
+    ########################################################################################################################
+    # Create JSON for Leaflet
+    ########################################################################################################################
+    # parity = {}
+    # with open('data/MDG611.csv', 'rb') as f:
+    #     reader = csv.reader(f)
+    #     for row in reader:
+    #         parity[unicode(row[1])] = row[24:28]
+    # with open('data/vector/countries.geo.json', 'rb') as f:
+    #     planet = json.load(f)
+    #     for country in planet['features']:
+    #         try:
+    #             country['properties']['parity1'] = parity[country['properties']['name']][0]
+    #             country['properties']['parity2'] = parity[country['properties']['name']][1]
+    #             country['properties']['parity3'] = parity[country['properties']['name']][2]
+    #             country['properties']['parity4'] = parity[country['properties']['name']][3]
+    #         except KeyError:
+    #             country['properties']['parity1'] = None
+    #             country['properties']['parity2'] = None
+    #             country['properties']['parity3'] = None
+    #             country['properties']['parity4'] = None
+    # with open('data/vector/countries_parity.geo.json', 'wb') as f:
+    #     json.dump(planet, f)
+    ########################################################################################################################
+    # Create DMSP Raw Time Series
+    ########################################################################################################################
+    # path = 'data/raster/'
+    # rasters = glob.glob(path+'/*pct.tar')
+    # # years = range(1992, 2014, 1)
+    # # with open('data/dmsp_timeseries.json', 'w') as f:
+    # #     json.dump({ year:[] for year in years }, f)
+    # for farchive in tqdm(rasters[28:]):
+    #     archive = tarfile.open(farchive)
+    #     for i, raster in enumerate(archive.getnames()):
+    #         if raster[-3:] == '.gz':
+    #             archive.extract(raster)
+    #             rname = path+raster[:-3]
+    #             tqdm.write('Processing raster: %s'%rname)
+    #             with gzip.open(raster, 'rb') as f:
+    #                 # tqdm.write('Extract %s'%raster)
+    #                 with open(path+raster[:-3], 'wb') as g:
+    #                     # tqdm.write('Write %s'%(path+raster[:-3]))
+    #                     g.write(f.read())
+    #             vname = 'data/vector/planet/admin_level_2.geojson'
+    #             tqdm.write('Processing vector: %s'%vname)
+    #             clip_and_pull_dmsp(vname, rname, dumpJSON=True)
+    #             os.remove(path+raster[:-3])
+    # vname = 'data/vector/planet/admin_level_2.geojson'
+    # rname = 'data/raster/F182010.v4c.avg_lights_x_pct/F182010.v4c.avg_lights_x_pct.tif'
+    # clip_and_pull_dmsp(vname, rname, dumpJSON=True)
+    ########################################################################################################################
+    # Process DMSP and MDG
+    ########################################################################################################################
+    with open('data/dmsp_timeseries.json', 'r') as f:
+        dmsp = json.load(f)
+    for year in dmsp.keys():
+        for 
+    # dmsp_flat = []
+    # for year in dmsp.keys():
+    #     nation_dict = {}
+    #     for nation in dmsp[year]:
+    #         try:
+    #             nation_dict[nation['name']] += nation['mean']
+    #             nation_dict[nation['name']] / 2 
+    #         except KeyError:
+    #             nation_dict[nation['name']] = nation['mean']
+    #     dmsp_flat.extend([ [year, x, y] for x, y in nation_dict.items() ])
+    # nations = list(set([ x[1] for x in dmsp_flat]))
+    # pp.pprint(nations)
+    with open('data/MDG_Export_cleaned.csv', 'r') as f:
+        table = csv.reader(f)
+        for i, row in enumerate(table):
+            if i == 0:
+                varname = row
+            else:
