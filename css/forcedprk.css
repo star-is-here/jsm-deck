@@ -1,0 +1,18 @@
+path {
+  fill: #ff0000;
+  stroke: #fff;
+  stroke-width: 1.5px;
+}
+
+path.link {
+  fill: none;
+  stroke: #0000ff;
+  opacity: .5;
+}
+
+text { 
+  font-size: 20px;
+  font-weight: 300;
+  text-anchor: end;
+  alignment-baseline: central;
+}

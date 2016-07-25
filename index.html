@@ -26,8 +26,9 @@
 
 		<script src="js/d3.min.js"></script>
 		<script src="js/dygraph-combined.js"></script>
+		<script src="js/jquery-3.0.0.min.js"></script>
 		<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script> -->
-		<script src="https://code.jquery.com/jquery-3.0.0.min.js" integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0=" crossorigin="anonymous"></script>
+		<!-- <script src="https://code.jquery.com/jquery-3.0.0.min.js" integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0=" crossorigin="anonymous"></script> -->
 
 	</head>
 	<body>
@@ -163,18 +164,23 @@
 				<section data-state="issue">
 				<style>.issue header.left:after { content: "Major Issues in Developing Countries"; }</style>
 					<ul>
-						<li>Incredible progress has been made in achieving the Millennium Development Goals set in 2000. </li>
-						<li>Nonetheless, there still remains much work to be done in a variety of areas 
-						towards <strong>Sustainable Development Goals</strong> the U.N. aims to accomplish by 2030:</li>
-						<ul>
-							<li>poverty and hunger,</li>
-							<li>gender inequality,</li>
-							<li>child and maternal mortality,</li>
-							<li>disease,</li>
-							<li>environmental sustainability,</li>
-							<li>and setbacks due to crises, shocks, and vulnerabilities</li>
-						</ul>
+						<li>Incredible progress has been made in achieving the Millennium Development Goals set in 2000.</li>
+						<li>Nonetheless, there still remains much work to be done in a variety of areas towards Sustainable Development Goals the U.N. aims to accomplish by 2030:</li>
+					<ul>
+						<li>Poverty and hunger</li>
+						<li>Gender inequality</li>
+						<li>Child and maternal mortality</li>
+						<li>Disease</li>
+						<li>Environmental sustainability</li>
+						<li>Setbacks due to crises, shocks, and vulnerabilities</li>
 					</ul>
+					</ul>
+					<aside class="notes">
+						<ul>
+							<li>Incredible progress has been made in achieving the Millenium Development Goals set in 2000, however, there still remains major issues in Developing Countries such as “Poverty and Hunger, Gender inequality, Child and maternal mortality, disease, environmental sustainability, and setbacks due to crises, shocks, and vulnerabilities.” Much work still needs to be done in these areas in order to accomplish U.N.’s Sustainable Development Goals by 2030</li>
+							<li>In the following slides, Ariel and I will expand upon these issues using data visualizations and information taken from the UN MDG report of 2015</li>
+						</ul>
+					</aside>
 				</section>
 				<section data-state="devGoal">
 				<style>.devGoal header.left:after { content: "Development Goal"; }</style>
@@ -208,9 +214,9 @@
 					<img src="img/target1a_new.png" width="100%">
 					<aside class="notes">
 						<ul>
-							<li>The UN MDG of Poverty and Hunger had three different targets. The first target was to halve the proportion of people living on less than $1.25/day, which is the UN’s classification of extreme poverty.</li>
+							<li>The UN MDG to Eradicate Extreme Poverty and Hunger had three different targets. The first target was to halve the proportion of people living on less than $1.25/day.</li>
 							<li>Although the number of people living in extreme poverty globally fell by 1 billion people, the world’s extremely poor people are distributed unevenly across two regions: South Asia and Sub Saharan Africa. This can be seen in the data visualization on the left, with Sub-Saharan Africa showing the least progress.</li>
-							<li>Additionally, women face a greater risk of living in poverty. As the data visualization on the right shows, in 41 countries women are more likely to live in poor households than men. This gender inequality in poverty needs to decrease.</li>
+							<li>Additionally, women face a greater risk of living in poverty. As the data visualization on the right shows, in 41 countries women are more likely to live in poor households than men.</li>
 						</ul>
 					</aside>
 				</section>
@@ -255,18 +261,17 @@
 					<img src="img/target1c_new.png" width="100%">
 					<aside class="notes">
 						<ul>
-							<li>The third target in relation to poverty and hunger was to halve the proportion of people suffering from hunger by 2015.</li>
-							<li>Much progress has been made. As seen in the data visualization to the left, the proportion of undernourished people in developing regions has decreased by nearly half.</li>
-							<li>However, differences in hunger prevalences continue to exist across regions. The data visualization in the middle portrays that the pace of reduction in caribbean, oceania, southern asia, and sub-saharan regions has been too slow to reach target.</li>
-							<li>Additionally, the prevalence of underweight children is declining, but the rate is too slow for all regions, specifically Sub-saharan africa, Southern Asia, and Oceania, to reach target.</li>
-							<li>Overall, much progress has been made to decrease the proportion of people living in extreme poverty and hunger. However, in order to achieve the goal of complete eradication, the world faces many obstacles and challenges, such as removing the gender inequality that exists in the issue of poverty and hunger and focusing on regions such as Sub-saharan africa and southern asia.</li>
+							<li>The third target was to halve the proportion of people suffering from hunger by 2015.</li>
+							<li>As seen in the data visualization to the left, the proportion of undernourished people in developing regions has decreased by nearly half.</li>
+							<li>However, differences in hunger prevalences continue to exist across regions. The data visualization on the right portrays that the pace of reduction in caribbean, oceania, southern asia, and sub-saharan regions has been too slow to reach target.</li>
+							<li>Overall, much progress has been made to decrease the proportion of people living in extreme poverty and hunger. However, in order to achieve the goal of complete eradication, the world faces many obstacles and challenges.</li>
 						</ul>
 					</aside>
 				</section>
 				<section data-state="devGoal">
 					<h1>Gender Inequality</h1>
 				</section>
-				<section data-state="targetgender">
+				<!-- <section data-state="targetgender">
 				<style>.targetgender body {
 					background-image: url('img/targetgender_opaque.png'); 
 					height: 100%; 
@@ -282,14 +287,23 @@
 						<li>Globally, women earn 24% less than men. </li>
 						<li>Women’s political representation has increased, but is nowhere near parity.</li>
 					</ul>
-				</section>
+				</section> -->
 				<section data-state="targetgender">
-					<img src="img/targetgender.jpg" width="60%">
+				<style>.targetgender header.left:after { content: "Target: Eliminate gender disparity in all levels of education by 2015"; }</style>
+					<img src="img/targetgender_new.png" width="100%">
+					<aside class="notes">
+						<ul>
+							<li>Additionally, the U.N had a goal of eliminating gender disparity in primary and secondary education by 2005, and all levels of education by 2015.</li>
+							<li>Five of the nine developing regions have achieved gender parity in primary education, as seen in the graph on the left, however there still remains many countries that have not reached this target.</li>
+							<li>In different areas other than education, women’s political representation has increased, but is nowhere near parity.</li>
+							<li>Furthermore, women are less likely to participate in the labour force than men, especially in Northern Africa, Southern Asia, and Western Asia and globally earn 24 percent less than men.</li>
+						</ul>
+					</aside>
 				</section>
 				<section data-state="devGoal">
 					<h1>Child Mortality</h1>
 				</section>
-				<section data-state="targetchild">
+				<!-- <section data-state="targetchild">
 				<style>.targetchild body {
 					background-image: url('img/targetchild_opaque.png'); 
 					height: 100%; 
@@ -304,26 +318,34 @@
 						<li>Socioeconomic disparities cause different rates of child mortality. </li>
 						<li>Progress towards eliminating measles has stalled. </li>
 					</ul>
-				</section>
+				</section> -->
 				<section data-state="targetchild">
-					<img src="img/targetchild.jpg" width="70%">
+				<style>.targetchild header.left:after { content: "Target: Reduce Child mortality by two-thirds by 2015"; }</style>
+					<img src="img/targetchild_new.png" width="100%">
+					<aside class="notes">
+						<ul>
+							<li>The 4th UN MDG targeted to reduce child mortality by two-thirds by 2015.</li>
+							<li>Although substantial progress has been made in reducing child mortality, with the trends that currently exist, it will take another ten years for this target to be reached. More children can and need to be saved from preventable deaths.</li>
+							<li>Furthermore, socioeconomic disparities cause different rates of child mortality as seen in the data visualization on the left.</li>
+							<li>Lastly, measles immunizations have saved millions of children’s lives, however, as seen in the graph on the right progress in implementing immunizations has stalled since 2010. Thus, between 2012 and 2013, the cases of measles actually increased.</li>
+						</ul>
+					</aside>
 				</section>
 				<section data-state="devGoal">
 					<h1>Maternal Mortality</h1>
 				</section>
 				<section data-state="targetmaternal">
-				<style>.targetmaternal header.left:after { content: "Targets: By 2015, reduce by three quarters the maternal mortality ratio; Achieve, by 2015, universal access to reproductive health"; }</style>
-					<ul>
-						<li>One in four babies worldwide are delivered without skilled care</li>
-						<li>Disparity across regions in access to maternal health care</li>
-						<li>Only half of pregnant woman receive the recommended amount of antenatal care</li>
-						<li>Sub-Saharan Africa and Latin America and the Caribbean have made slow progress on reducing adolescent childbearing. </li>
-						<li>There is a lack of basic data on births, deaths, and health</li>
+				<style>.targetmaternal header.left:after { content: "Targets: Reduce by three quarters, by 2015, the maternal mortality ratio; Achieve, by 2015, universal access to reproductive health"; }</style>
+					<img src="img/targetmat_new.png" width="100%">
+					<aside class="notes">
 						<ul>
-							<li>Prevents effective policies from being created</li>
-							<li>Globally, only 51 percent of countries have some data on maternal causes of death.</li>
+							<li>The UN MDG to improve maternal health included two different targets: to reduce by three quarters by 2015, the maternal mortality ratio and to achieve by 2015, universal access to reproductive health.</li>
+							<li>The maternal mortality ratio has decreased by 45% worldwide. However, there are disparities in access to maternal health care across different regions as seen in the graph on the left.</li>
+							<li>Furthermore, only half of pregnant women receive the recommended amount of antenatal care. In order to assure a safe delivery, the U.N. recommends four appointments in order for the mother to receive a basic care package and to detect any warning signs early on.</li>
+							<li>Unfortunately, there is a lack of basic data on births, deaths, and health. Globally, only 51 percent of countries have some data on maternal causes of death which prevents effective policies from being created.</li>
+							<li>Now, we have Ariel to present the remaining issues.</li>
 						</ul>
-					</ul>
+					</aside>
 				</section>
 				<section data-state="ebp_title">
 				<style>.ebp_title header.left:after { content: "Evidence-based Policymaking"; }</style>
@@ -1007,6 +1029,11 @@
 						<li>These provinces have little migration, mainly migration to Pyongyang.</li>
 						<li>Citizens unable to migrate to avoid stunting?</li>
 					</ul>
+				</section>
+				<section data-state="case4_force">
+					<h5>DPRK Net Migration vs. Global Chronic Malnutrition (Stunting)</h5>
+					<p><small>Net Migration Exceeding 1000</small></p>
+					<iframe src="iframe/force/dprkforce.html" width="100%" height="800px"></iframe>
 				</section>
 				<section data-state="case4_force">
 					<img src="img/forceMIG.jpg" width="100%">
