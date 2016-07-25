@@ -42,8 +42,8 @@
 									text-align:center;
 									font-size:39px;"></header>
 			<div class="slides">
-				<section data-state="headleft1">
-				<style>.headleft1 header.left:after { content: "A 2016 Joint Statistical Meetings Topic-Contributed Panel"; }</style>
+				<section data-state="titlepage">
+				<style>.titlepage header.left:after { content: "A 2016 Joint Statistical Meetings Topic-Contributed Panel"; }</style>
 					<h2>Visualizing the Power of</h2>
 					<h2>Evidence-Driven Policy in</h2>
 					<h2>Countries in Transition</h2>
@@ -53,8 +53,8 @@
 					<p>Igor Barahona</p>
 					<p><small>Mathematics Institute of the UNAM, Mexico</small></p>	
 				</section>
-				<section data-state="headleft2">
-				<style>.headleft2 header.left:after { content: "Research Co-authors"; }</style>
+				<section data-state="authors">
+				<style>.authors header.left:after { content: "Research Co-authors"; }</style>
 					<ul style="list-style:none;">
 						<li>Giang Nguyen (ISR Foundation Center for Interdisciplinary Research)</li>
 						<li>Clara Kyung (McGill University)</li>
@@ -68,8 +68,8 @@
 					</ul>
 					<p><small>Note: All authors are affiliated with the International Strategy and Reconciliation Foundation.</small></p>
 				</section>
-				<section data-state="header3">
-				<style>.header3 header.left:after { content: "Outline"; }</style>
+				<section data-state="outline">
+				<style>.outline header.left:after { content: "Outline"; }</style>
 					<ul>
 						<li>Introduction</li>
 						<ul>
@@ -82,9 +82,18 @@
 						<li>Demonstration of data visualizations </li>
 						<li>Conclusion</li>
 					</ul>
+					<aside class="notes">
+					<ul>
+						<li>Here is an outline of our presentation today. </li>
+						<li>First, I’ll introduce our research questions and methodology. </li>
+						<li>Next, Ariel, Hannah and I will discuss policy challenges in developing countries, evidence-based policymaking, and the power of data visualization.</li>
+						<li>After that, Igor and Star will join us to demonstrate data visualizations related to key policy issues in developing countries. </li>
+						<li>Last, I’ll conclude and discuss suggestions for future research.</li>
+					</ul>
+					</aside>
 				</section>
-				<section data-state="header4">
-				<style>.header4 header.left:after { content: "Introduction"; }</style>
+				<section data-state="intro">
+				<style>.intro header.left:after { content: "Introduction"; }</style>
 					<ul>
 						<li>Background</li>
 						<ul>
@@ -94,28 +103,40 @@
 						<li>Research Purpose</li>
 						<ul>
 							<li>Demonstrate power of DVs, using data from multiple sources.</li>
-							<li>Show how DVs may help the United Nations and non-governmental agencies 
-								develop evidence-driven decisions for sustainable development programs.</li>
+							<li>Show how DVs may help the United Nations and non-governmental agencies develop evidence-driven decisions for sustainable development programs.</li>
 						</ul>
 					</ul>
-				</section>
-				<section data-state="header5">
-				<style>.header5 header.left:after { content: "Research Questions"; }</style>
+					<aside class="notes">
 					<ul>
-						<li>Can DVs advance EBP in countries in transition?</li>
-						<li>What data can we combine to build evidence that may inform EBP?</li>
-						<li>How can we demonstrate the power of EBP with DVs relevant 
-							to policy issues critical to the  sustainable development of countries in transition?</li>
-						<ul>
-							<li>Economic policy</li>
-							<li>Public health policy</li>
-							<li>Social/education policy</li>
-						</ul>
+						<li>In the last few decades, evidence-based policymaking has become an important topic in the conversations among government departments, research organizations, and think tanks.</li>
+						<li>Evidence-based policymaking utilizes evidence from research to inform the policymaking process, which brings about social, economic, and fiscal benefits.</li>
+						<li>Data visualization is the use of electronic tools to promote accurate comprehension of data.</li>
+						<li>Researchers can create data visualizations to communicate their messages about health, social, and economic policy issues in developing countries.</li>
+						<li>In this paper, we aim to demonstrate the power of data visualizations as an evidence-based approach to policymaking.</li>
+						<li>To that end, we created static and interactive visualizations of data from multiple sources, including survey data, census, and administrative records.</li>
+						<li>We discussed the way in which data visualizations may help the United Nations and non-governmental agencies develop evidence-driven decisions for sustainable development programs.</li>
+					</ul>					
+					</aside>
+				</section>
+				<section data-state="question">
+				<style>.question header.left:after { content: "Research Questions"; }</style>
+					<ul>
+						<li>DVs and EBP in countries in transition?</li>
+						<li>What data?</li>
+						<li>How can we demonstrate power of EBP with DVs?</li>
 						<li>Merits and drawbacks of EBP and DVs?</li>
 					</ul>
+					<aside class="notes">
+						<ul>
+							<li>We focus on these 4 research questions in our paper. First, we want to know if data visualizations can advance EBP in countries in transition.</li>
+							<li>Second, what data can we combine to build evidence that may inform EBP.</li>
+							<li>Third, we are interested in demonstrating the power of EBP by creating DVs relevant to economic, public health, and social/education policies in countries in transition.</li>
+							<li>Last, we want to assess the merits and drawbacks of EBP and DVs, especially when addressing developmental issues critical to countries in transition.</li>
+						</ul>
+					</aside>				
 				</section>
-				<section data-state="header6">
-				<style>.header6 header.left:after { content: "Methodology"; }</style>
+				<section data-state="method">
+				<style>.method header.left:after { content: "Methodology"; }</style>
 					<ul>
 						<li>Three main sources of data:</li>
 						<ul>
@@ -130,9 +151,17 @@
 							<li>Use R and Tableau to develop DVs</li>
 						</ul>
 					</ul>
+
+					<aside class="notes">
+						<ul>
+							<li>Our main sources of data were the United Nations’ Millennium Development Goals Indicators, and the World Bank’s Open Data. We also incorporate data from other sources, such as the DPRK 2008 Census as applicable.</li>
+							<li>We continued a team effort from last year and applied the principles of DVs as offered in a paper co-authored by our team members. We used statistical tools such as R and Tableau to create DVs, including static and interactive DVs. We tailored these DVs to three major areas of countries in transition: public health, economics, and social/education development.</li>
+							<li>And now Hannah and ariel will discuss major issues in developing countries.</li>
+						</ul>
+					</aside>
 				</section>
-				<section data-state="header7">
-				<style>.header7 header.left:after { content: "Major Issues in Developing Countries"; }</style>
+				<section data-state="issue">
+				<style>.issue header.left:after { content: "Major Issues in Developing Countries"; }</style>
 					<ul>
 						<li>Incredible progress has been made in achieving the Millennium Development Goals set in 2000. </li>
 						<li>Nonetheless, there still remains much work to be done in a variety of areas 
@@ -147,33 +176,64 @@
 						</ul>
 					</ul>
 				</section>
-				<section data-state="header8">
-				<style>.header8 header.left:after { content: "Development Goal"; }</style>
+				<section data-state="devGoal">
+				<style>.devGoal header.left:after { content: "Development Goal"; }</style>
 					<h1>Poverty and Hunger</h1>
 				</section>
-				<section data-state="header9">
-				<style>.header9 header.left:after { content: "Target 1A: Halve proportion of people living on less than $1.25/day"; }</style>
+				<section data-state="target1a">
+				<style>.target1a body {
+					background-image: url('img/target1a_opaque.png'); 
+					height: 100%; 
+					width: 100%;
+					background-repeat: no-repeat;
+					background-position: center;
+					} 
+					header.left:after { content: "Target 1A: Halve proportion of people living on less than $1.25/day"; }</style>
 					<ul>
 						<li>Although the number of people living in extreme poverty globally fell by 1 billion people, the world’s extremely poor people are distributed unevenly across two regions: South Asia and Sub Saharan Africa.</li>
 						<li>Gender Inequality must continue to decrease so that women do not face a greater risk of living in poverty</li>
 					</ul>
+
+					<aside class="notes">
+						<ul>
+							<li>First, it’s about reducing poverty and hunger across the globe.</li>
+							<li>Understanding the characteristics of the world’s poorest people and the reasons for their deprivation is crucial in determining how best to target and eradicate poverty.</li>
+							<li>Greater efforts are needed to produce high quality poverty and gender statistics if we are to monitor progress effectively in eradicating extreme poverty for all people everywhere.</li>
+							<li>(Go over slides and figure)</li>
+						</ul>
+					</aside>
 				</section>
-				<section data-state="header9">
-					<h1>Placeholder for VIZ</h1>
+				<section data-state="target1a">
+					<img src="img/target1a.jpg" width="100%">
+					<aside class="notes">
+						<ul>
+							<li>First, it’s about reducing poverty and hunger across the globe.</li>
+							<li>Understanding the characteristics of the world’s poorest people and the reasons for their deprivation is crucial in determining how best to target and eradicate poverty.</li>
+							<li>Greater efforts are needed to produce high quality poverty and gender statistics if we are to monitor progress effectively in eradicating extreme poverty for all people everywhere.</li>
+							<li>(Go over slides and figure)</li>
+						</ul>
+					</aside>
 				</section>
-				<section data-state="header10">
-				<style>.header10 header.left:after { content: "Target 1B: Full and productive employment for all people"; }</style>
+				<section data-state="target1b">
+				<style>.target1b body {
+					background-image: url('img/target1b_opaque.png'); 
+					height: 100%; 
+					width: 100%;
+					background-repeat: no-repeat;
+					background-position: center;
+				}
+				header.left:after { content: "Target 1B: Full and productive employment for all people"; }</style>
 					<ul>
 						<li>There is a lack of employment opportunities in comparison to the growing labor force. </li>
 						<li>Youth, especially young women, are disproportionately affected by the lack of employment opportunities</li>
 						<li>Although the proportion of workers living in extreme poverty has largely decreased, nearly half the population of employed people are working in vulnerable conditions.</li>
 					</ul>
 				</section>
-				<section data-state="header10">
-					<h1>Placeholder for VIZ</h1>
+				<section data-state="target1b">
+					<img src="img/target1b.jpg" width="100%">
 				</section>
-				<section data-state="header11">
-				<style>.header11 header.left:after { content: "Target 1C: Halve proportion of people suffering from hunger"; }</style>
+				<section data-state="target1c">
+				<style>.target1c header.left:after { content: "Target 1C: Halve proportion of people suffering from hunger"; }</style>
 					<ul>
 						<li>Differences in hunger prevalences continue to exist across regions</li>
 						<li>Pace of reduction in Caribbean, Oceania, Southern Asia, and Sub-Saharan regions has been too slow to achieve target. </li>
@@ -182,15 +242,18 @@
 						<li>Overall, much progress has been made to decrease the proportion of people living in extreme poverty and hunger. However, the world still faces many obstacles and challenges in order to reach the goal of complete eradication extreme poverty and hunger. </li>
 					</ul>
 				</section>
-				<section data-state="header11">
-					<h1>Placeholder for VIZ</h1>
-				</section>
-				<section data-state="header12">
-				<style>.header12 header.left:after { content: "Development Goal"; }</style>
+				<section data-state="devGoal">
 					<h1>Gender Inequality</h1>
 				</section>
-				<section data-state="header13">
-				<style>.header13 header.left:after { content: "Target: Eliminate gender disparity in all levels of education by 2015"; }</style>
+				<section data-state="targetgender">
+				<style>.targetgender body {
+					background-image: url('img/targetgender_opaque.png'); 
+					height: 100%; 
+					width: 100%;
+					background-repeat: no-repeat;
+					background-position: center;
+				}
+				header.left:after { content: "Target: Eliminate gender disparity in all levels of education by 2015"; }</style>
 					<ul>
 						<li>Women are less likely to participate in the labour force than men</li>
 						<li>Especially troubled in Northern Africa, Southern Asia, and Western Asia.</li>
@@ -199,15 +262,21 @@
 						<li>Women’s political representation has increased, but is nowhere near parity.</li>
 					</ul>
 				</section>
-				<section data-state="header13">
-					<h1>Placeholder for VIZ</h1>
+				<section data-state="targetgender">
+					<img src="img/targetgender.jpg" width="60%">
 				</section>
-				<section data-state="header14">
-				<style>.header14 header.left:after { content: "Development Goal"; }</style>
+				<section data-state="devGoal">
 					<h1>Child Mortality</h1>
 				</section>
-				<section data-state="header15">
-				<style>.header15 header.left:after { content: "Target: Reduce Child mortality by two-thirds by 2015"; }</style>
+				<section data-state="targetchild">
+				<style>.targetchild body {
+					background-image: url('img/targetchild_opaque.png'); 
+					height: 100%; 
+					width: 100%;
+					background-repeat: no-repeat;
+					background-position: center;
+				}
+				header.left:after { content: "Target: Reduce Child mortality by two-thirds by 2015"; }</style>
 					<ul>
 						<li>Substantial progress has been made in reducing child mortality, target is not acheived.</li>
 						<li>Given current trend, it will take another ten years for the target to be reached.</li>
@@ -215,15 +284,14 @@
 						<li>Progress towards eliminating measles has stalled. </li>
 					</ul>
 				</section>
-				<section data-state="header15">
-					<h1>Placeholder for VIZ</h1>
+				<section data-state="targetchild">
+					<img src="img/targetchild.jpg" width="70%">
 				</section>
-				<section data-state="header16">
-				<style>.header16 header.left:after { content: "Development Goal"; }</style>
+				<section data-state="devGoal">
 					<h1>Maternal Mortality</h1>
 				</section>
-				<section data-state="header17">
-				<style>.header17 header.left:after { content: "Targets: By 2015, reduce by three quarters the maternal mortality ratio; Achieve, by 2015, universal access to reproductive health"; }</style>
+				<section data-state="targetmaternal">
+				<style>.targetmaternal header.left:after { content: "Targets: By 2015, reduce by three quarters the maternal mortality ratio; Achieve, by 2015, universal access to reproductive health"; }</style>
 					<ul>
 						<li>One in four babies worldwide are delivered without skilled care</li>
 						<li>Disparity across regions in access to maternal health care</li>
@@ -236,45 +304,125 @@
 						</ul>
 					</ul>
 				</section>
-				<section data-state="header18">
-				<style>.header18 header.left:after { content: "Development Goal"; }</style>
+				<section data-state="ebp_title">
+				<style>.ebp_title header.left:after { content: "Evidence-based Policymaking"; }</style>
+					<h1>Evidence-based Policymaking</h1>
+				</section>
+				<section data-state="ebp">
+				<style>.ebp header.left:after { content: "Power of Evidence-based Policymaking"; }</style>
+					<ul>
+						<li>EBP utilizes evidence from research to inform the policymaking process.</li>
+						<li>EBP has become increasingly important in the last few decades in both the U.S. and the U.K.</li>
+						<ul>
+							<li>U.K.: emphasis on EBP grew  in 1997.</li>
+							<li>U.S.: EBP implemented by the Obama administration .</li>
+							<li>EBP is crucial to Congress’ spending decisions.</li>
+						</ul>
+					</ul>
+					<aside class="notes">
+						<ul>
+							<li>Now that we have discussed major issues in developing countries, I’ll discuss the two main ideas of our research: evidence-based policymaking and data visualization.</li>
+							<li>Simply put, EBP utilizes evidence from research to inform the policymaking process.</li>
+							<li>In the last few decades, EBP has becoming increasingly important.</li>
+						</ul>
+					</aside>
+				</section>
+				<section data-state="devGoal">
 					<h1>Combating Diseases</h1>
 				</section>
-				<section data-state="header19">
-				<style>.header19 header.left:after { content: "HIV/AIDS"; }</style>
-					<h1>Placeholder for VIZ</h1>
+				<section data-state="hiv">
+				<style>.hiv header.left:after { content: "HIV/AIDS"; }</style>
+					<img src="img/combatHIVa.jpg" width="48%">
+					<img src="img/combatHIVb.jpg" width="48%">
+					<aside class="notes">
+						<ul>
+							<li>One of the major goals of the UN has been to combat the major diseases impacting the global community. At the time when the MDGs were drafted up, at 1990, HIV/AIDS, malaria, and tuberculosis were considered the most urgent of issues to be addressed.</li>
+							<li>Since then, the number of HIV related deaths has declined and the number of people with the necessary treatment has increased.</li>
+							<li>On the left, you can see that the number of AIDS related orphans has been decreasing since 2009.</li>
+							<li>Still, the problem is heavily concentrated in sub-Saharan Africa, millions of orphans still need protection, and knowledge of disease prevention is low.</li>
+							<li>The bar graph on the right depicts two things: comprehensive correct knowledge of HIV and actual use of condoms during higher-risk sex. As you can see, although men are relatively more educated on the issue, the general percentage of awareness remains quite low.</li>
+						</ul>
+					</aside>
 				</section>
-				<section data-state="header20">
-				<style>.header20 header.left:after { content: "Malaria"; }</style>
-					<h1>Placeholder for VIZ</h1>
+				<section data-state="malaria">
+				<style>.malaria header.left:after { content: "Malaria"; }</style>
+					<img src="img/combatMALa.jpg" width="26%">
+					<img src="img/combatMALb.jpg" width="70%">
+					<aside class="notes">
+						<ul>
+							<li>Another disease that has been a part of the UN agenda is malaria.</li>
+							<li>The global incidence rate has decreased by 37%.</li>
+							<li>If you take a look at the graph on right, you can see that the proportion of children sleeping under insecticide-treated mosquito nets in some countries in sub-Saharan Africa has increased drastically.</li>
+							<li>As a result of such prevention efforts, the general trend of malaria incidence rate (in blue) and malaria mortality rate (in red) has been decreasing steadily since 2000. Still, malaria remains a public health challenge, and only 20% of children with fever receive a malaria diagnostic test.</li>
+						</ul>
+					</aside>
 				</section>
-				<section data-state="header21">
-				<style>.header21 header.left:after { content: "Tuberculosis"; }</style>
-					<h1>Placeholder for VIZ</h1>
+				<section data-state="tuberculosis">
+				<style>.tuberculosis header.left:after { content: "Tuberculosis"; }</style>
+					<img src="img/combatTUB.jpg" width="100%">
+					<aside class="notes">
+						<ul>
+							<li>Tuberculosis is the third and final disease that was officially a part of the MDG goals.</li>
+							<li>The incidence, mortality, and prevalence rate of tuberculosis has all been falling due to effective prevention, diagnosis, and treatment.</li>
+							<li>As seen in the graph on the left, the incidence trend and mortality trend has been steadily falling since 1990.</li>
+							<li>Prevalence of TB has especially decreased significantly.</li>
+							<li>In other words, less people have gotten TB or died from it, but TB cases are more concentrated in certain areas.</li>
+						</ul>
+					</aside>
 				</section>
-				<section data-state="header21">
-					<h1>Placeholder for VIZ</h1>
+				<section data-state="tuberculosis">
+					<img src="img/combatTUB2.jpg">
+					<aside class="notes">
+						<ul>
+							<li>Still, in developing regions, where TB poses the highest threat, more than 85% of newly diagnosed cases have been successfully treated for 6 consecutive years, as shown in light blue in the graph</li>
+						</ul>
+					</aside>
 				</section>
-				<section data-state="header22">
-				<style>.header22 header.left:after { content: "Development Goal"; }</style>
+				<section data-state="devGoal">
 					<h1>Environmental Sustainability</h1>
 				</section>
-				<section data-state="header22">
-				<style>.header22 header.left:after { content: "Environmental Sustainability"; }</style>
-					<h1>Placeholder for VIZ</h1>
+				<section data-state="envSus">
+				<style>.envSus header.left:after { content: "Environmental Sustainability"; }</style>
+					<img src="img/envSUSa.png" width="48%">
+					<img src="img/envSUSb.jpg" width="48%">
+					<aside class="notes">
+						<ul>
+							<li>The UN has also tried to attain a certain level of environmental sustainability over the past couple decades.</li>
+							<li>Success has definitely been achieved on many fronts. Just to name a few, net deforestation has slowed, the ozone layer is expected to recover by mid-century, and 91% of the world’s population is using an improved water source.</li>
+							<li>But the problems that exist need immediate attention.</li>
+							<li>Global greenhouse gas emissions continue to rise. On the left is a graph of the emission of carbon dioxide. The bars show the extent to which the world as a whole, and especially developing nations, has contributed to global carbon emissions in the past two and a half decades.</li>
+							<li>Overexploitation of marine fisheries is also rising. On the right is a graph illustrating the current status of the marine fisheries. The actual number of fish landings is increasing, but the fish stock within their safe biological limits is decreasing.</li>
+						</ul>
+					</aside>
 				</section>
-				<section data-state="header22">
-					<h1>Placeholder for VIZ</h1>
+				<section data-state="envSus">
+				<img src="img/envBIO.jpg" width="50%">
+					<aside class="notes">
+						<ul>
+							<li>Loss of biodiversity continues to be a struggle for the world’s species.</li>
+							<li>As depicted in this graph, birds, mammals, corals, amphibians and cycads (psych-add) have all been experiencing a downward trend towards loss of diversity.</li>
+							<li>This has especially been dramatic for corals, seen in orange.</li>
+						</ul>
+					</aside>
 				</section>
-				<section data-state="header22">
-					<h1>Placeholder for VIZ</h1>
+				<section data-state="envSus">
+					<img src="img/envWAT.jpg" width="50%">
+					<aside class="notes">
+						<ul>
+							<li>Although there have been developments regarding basic sanitation and use of improved sanitation facilities, huge disparities exist between the rural and urban communities.</li>
+							<li>This graph shows the difference in proportion of population using improved drinking water sources (in blue) and sanitation facilities (in red) in urban and rural populations as well as the world in general.</li>
+							<li>On the left, the darker the blue the better, and on the right, the lighter the red the better.</li>
+							<li>As you can see, in urban communities (the leftmost blue and leftmost red) the colors show a majority of dark blue or light red.</li>
+							<li>However, the world average is brought down significantly by the rural areas, whereas urban areas maintain relatively good conditions.</li>
+						</ul>
+					</aside>
 				</section>
-				<section data-state="header22">
-				<style>.header22 header.left:after { content: "Roadblocks"; }</style>
+				<section data-state="roadblock">
+				<style>.roadblock header.left:after { content: "Roadblocks"; }</style>
 					<h1>Setbacks due to crises, shocks, and vulnerabilities</h1>
 				</section>
-				<section data-state="header23">
-				<style>.header23 header.left:after { content: "Setbacks due to crises, shocks, and vulnerabilities"; }</style>
+				<section data-state="setback">
+				<style>.setback header.left:after { content: "Setbacks due to crises, shocks, and vulnerabilities"; }</style>
 					<h3>Unexpected crises and unforeseen problems in certain regions have proven to be sudden and major obstacles that impede progress</h3>
 					<ol>
 						<li><strong>2008 Economic Crisis</strong> severely affected many sub-Saharan African countries</li>
@@ -282,24 +430,17 @@
 						<li>Developing countries are vulnerable to <strong>natural disasters</strong></li>
 						<li><strong>Political instability and conflict</strong> has been a major factor hindering progress</li>
 					</ol>
-				</section>
-				<section data-state="header24">
-				<style>.header24 header.left:after { content: "Evidence-based Policymaking"; }</style>
-					<h1>Power of Evidence-based Policymaking</h1>
-				</section>
-				<section data-state="header25">
-				<style>.header25 header.left:after { content: "Power of Evidence-based Policymaking"; }</style>
-					<ul>
-						<li>EBP utilizes evidence from research to inform the policymaking process.</li>
-						<li>EBP has become increasingly important in the last few decades:</li>
+					<aside class="notes">
 						<ul>
-							<li>In the U.K., the emphasis on EBP started to deepen in 1997 (Sutcliffe & Court, 2005).</li>
-							<li>In the U.S., the Obama administration developed and implemented six evidence-based initiatives, covering various areas of social intervention (Haskins & Baron, 2011).</li>
-							<li>Research organizations published papers highlighting the role of EBP as the crucial factor in the success of Congress’ spending decisions and federal social programs (Baron & Haskins, 2011; Liebman, 2013; Muhlhausen, 2015).</li>
+							<li>Despite the efforts of the multiple organizations working to improve the realities of the world, unexpected crises and unforeseen problems have impeded progress.</li>
+							<li>Firstly, the 2008 economic crisis severely affected sub-saharan african countries, especially as many depend on primary commodities for exports.</li>
+							<li>The Ebola outbreak affected not only health facilities and factors but also school-attending children.</li>
+							<li>As many developing countries are agriculture-based, they are vulnerable to natural disasters, which will only worsen due to climate change. Lastly, political instability and conflict has been a major factor affecting all areas concerning the government and citizens.</li>
+							<li>Although these were unexpected problems, valuable lessons regarding crisis management can be learned and applied to future scenarios.</li>
 						</ul>
-					</ul>
+					</aside>
 				</section>
-				<section data-state="header25">
+				<section data-state="ebp">
 					<ul>
 						<li>Advantage of EBP: its methodical approach to policymaking</li>
 						<li>The advantage of EBP could be shown in three aspects (Baron & Haskins, 2011; Liebman, 2013; Muhlhausen, 2015):</li>
@@ -309,9 +450,17 @@
 							<li>Fiscal benefit: shutting down ineffective programs will help reduce debts in the long run.</li>
 						</ul>
 					</ul>
+					<aside class="notes">
+						<ul>
+							<li>The power of EBP lies in its methodical approach to policymaking, an approach that rendered opinion-based policymaking ineffective. According to the literature, this advantage of EBP over the obsolete opinion-based policymaking could be shown in three aspects: social, economic, and fiscal benefits.</li>
+							<li>First, the social benefit of EBP could be reaped by collecting high-quality evidence on the effectiveness of social programs. Scientifically rigorous evaluations of programs would reveal programs that work, as well as those that fail. Policymakers can then eliminate programs with mediocre results, and expand programs that are effective.</li>
+							<li>Second, expanding effective social programs will in turn lead to significant economic results. For example, if we expand programs that has empirically improved the education of low-income children, we will eventually close the income-based academic-achievement gaps, and fully utilize any untapped human potential. Utilizing the human resources will lead to faster economic growth.</li>
+							<li>The third benefit of EBP is the fiscal benefit. In 2015, the U.S. federal government owed more than $18.1 trillion in debt (Muhlhausen, 2015). Replacing ineffective programs with effective ones will reduce government spending and debts. Shutting down ineffective programs will improve the allocation of scarce federal resources, and help reduce debts in the long run.</li>
+						</ul>
+					</aside>
 				</section>
-				<section data-state="header26">
-				<style>.header26 header.left:after { content: "EBP and Countries in Transition"; }</style>
+				<section data-state="ebpCountry">
+				<style>.ebpCountry header.left:after { content: "EBP and Countries in Transition"; }</style>
 					<ul>
 						<li>EBP can also be applied to countries in transition, with greater potential for improvement.</li>
 						<li>Issues with applying EBP to countries in transition: </li>
@@ -323,20 +472,32 @@
 							<li>and civil society</li>
 						</ul>
 					</ul>
+					<aside class="notes">
+						<ul>
+							<li>Many EBP strategies of developed countries can be applied to countries in transition.</li>
+							<li>Since EBP is often less developed in these countries, the potential for growth is greater; in consequence, the improvement could be much more significant.</li>
+							<li>Through our literature review, the lack of a stable democracy was repeatedly mentioned as a major challenge for countries in transition. Other issues are listed here.</li>
+						</ul>
+					</aside>
 				</section>
-				<section data-state="header27">
-				<style>.header27 header.left:after { content: "Evidence-based Policymaking"; }</style>
+				<section data-state="ebp">
 					<h1>Data Visualizations for Evidence-based Policymaking</h1>
 				</section>
-				<section data-state="header28">
-				<style>.header28 header.left:after { content: "Principles of Data Visualization"; }</style>
+				<section data-state="prinDV">
+				<style>.prinDV header.left:after { content: "Principles of Data Visualization"; }</style>
 					<h3><i>“the use of computer-supported interactive visual representations of abstract data to amplify cognition”</i></h3>
 					<h4>- Card, Mackinlay, Shneiderman (1999)</h4>
+					<aside class="notes">
+						<ul>
+							<li>Data visualization can be understood as the use of electronic tools to promote accurate comprehension of data.</li>
+							<li>Under this definition, the role of data visualization is two-fold. First, it helps viewers achieve a clear understanding of the data. Second, it is researchers’ instrument to communicate their messages about the data to the viewers.</li>
+							<li>In view of the aforementioned role of data visualization, we present several principles of data visualization, which were discussed by author Stephen Few in his article “Information Visualization, Design, and the Arts: Collision or Collaboration”. We illustrate these principles by examples of DVs that we came across during our lit review.</li>
+							<li>We apply these principles in our research, so that our data visualizations facilitate understanding of data from the UN.</li>
+						</ul>
+					</aside>
 				</section>				
-				<section data-state="header28">
-					<h1>Placeholder for VIZ</h1>
-				</section>		
-				<section data-state="header28">
+				<section data-state="prinDV">
+					<img src="img/prin1.png" width="90%">
 					<ul>
 						<li>Few’s critiques:</li>
 						<ul>
@@ -347,36 +508,67 @@
 						</ul>
 					</ul>
 				</section>
-				<section data-state="header29">
-				<style>.header29 header.left:after { content: "First Principle"; }</style>
+				<section data-state="prin1">
+				<style>.prin1 header.left:after { content: "First Principle"; }</style>
+					<img src="img/prin2.jpg" width="90%">
 					<h3>Quantitative values should be displayed using the lengths of simple, two-dimensional objects.</h3>
+					<aside class="notes">
+						<ul>
+							<li>First, viewers can easily understand quantitative values if they are displayed using the lengths of simple, two-dimensional objects, such as bars.</li>
+							<li>This method prompts the human mind to make comparisons on a one-dimensional plane (the lengths) while objects are presented on a two-dimensional surface.</li>
+							<li>On the contrary, angles and areas require the human brain to make two-dimensional comparisons in a two-dimensional presentation; therefore, they tend to make it more difficult for viewers to decode the visualizations.</li>
+							<li>For example, “North Korea Tuberculosis” displays the presence of TB in the DPRK in 1990-2012 using a simple bar graph.[1] The difference in the lengths of the bars stands out, immediately drawing the viewers’ attention to the rapid increase in TB prevalence in the DPRK.</li>
+							<li>[1] TheGlobalEconomy.com, “North Korea Tuberculosis.”</li>
+						</ul>
+					</aside>
 				</section>				
-				<section data-state="header29">
-					<h1>Placeholder for VIZ</h1>
-				</section>	
-				<section data-state="header30">
-				<style>.header30 header.left:after { content: "Second Principle"; }</style>
+				<section data-state="prin2">
+				<style>.prin2 header.left:after { content: "Second Principle"; }</style>
+					<img src="img/prin3.jpg" width="75%">
 					<h3>Viewers cannot see a pattern formed by multiple values if they only look at one value at a time. </h3>
-				</section>				
-				<section data-state="header30">
-					<h1>Placeholder for VIZ</h1>
-				</section>	
-				<section data-state="header31">
-				<style>.header31 header.left:after { content: "Third Principle"; }</style>
+					<aside class="notes">
+						<ul>
+							<li>Second, viewers cannot see a pattern formed by multiple values if they only look at one value at a time.</li>
+							<li>The use of lines makes the pattern a lot clearer, especially with a set of values across a continuous range such as ages.</li>
+							<li>As an example, in “North Korea Tuberculosis”, it would be difficult to spot the increase in TB prevalence if the viewers could only see the number of TB cases for each year.</li>
+							<li>Map visualizations highlight the geographical pattern.</li>
+							<li>An example is “Visualizing North Korea’s Worst Drought in Decades”.[1] This map displays the impact of the drought that occurred in June 2014 in the DPRK.</li>
+							<li>Current vegetation levels are used as a proxy for drought.</li>
+							<li>Vegetation from June 10 through June 25 in 2014 is compared to a baseline, which is constructed as the average level of vegetation in the same June extent for the years 2009-2013.</li>
+							<li>While green areas signal higher level of vegetation than average, areas covered in red have less vegetation than average.</li>
+							<li>The dominance of red areas demonstrate the severity of the drought (Figure 2).</li>
+							<li>[1] developmentSEED, “Visualizing North Korea’s Worst Drought in Decades.”</li>
+						</ul>
+					</aside>
+				</section>
+				<section data-state="prin3">
+				<style>.prin3 header.left:after { content: "Third Principle"; }</style>
+					<img src="img/prin4.jpg" width="100%">
 					<h3>Showing multiple graphs together can be better than showing a single graph.</h3>
+					<aside class="notes">
+						<ul>
+							<li>Second, viewers cannot see a pattern formed by multiple values if they only look at one value at a time.</li>
+							<li>The use of lines makes the pattern a lot clearer, especially with a set of values across a continuous range such as ages.</li>
+							<li>As an example, in “North Korea Tuberculosis”, it would be difficult to spot the increase in TB prevalence if the viewers could only see the number of TB cases for each year.</li>
+							<li>Map visualizations highlight the geographical pattern.</li>
+							<li>An example is “Visualizing North Korea’s Worst Drought in Decades”.[1]</li>
+							<li>This map displays the impact of the drought that occurred in June 2014 in the DPRK.</li>
+							<li>Current vegetation levels are used as a proxy for drought.</li>
+							<li>Vegetation from June 10 through June 25 in 2014 is compared to a baseline, which is constructed as the average level of vegetation in the same June extent for the years 2009-2013.</li>
+							<li>While green areas signal higher level of vegetation than average, areas covered in red have less vegetation than average.</li>
+							<li>The dominance of red areas demonstrate the severity of the drought (Figure 2).</li>
+							<li>[1] developmentSEED, “Visualizing North Korea’s Worst Drought in Decades.”</li>
+						</ul>
+					</aside>
 				</section>				
-				<section data-state="header31">
-					<h1>Placeholder for VIZ</h1>
-				</section>	
-				<section data-state="header32">
-				<style>.header32 header.left:after { content: "Fourth Principle"; }</style>
+				<section data-state="prin4">
+				<style>.prin4 header.left:after { content: "Fourth Principle"; }</style>
+					<img src="img/prin5.jpg" width="70%">
 					<h3>Viewers should be able to focus on data of interest.</h3>
+					<small><a href="http://www.theguardian.com/world/datablog/interactive/2013/apr/09/north-korea-south-korea-interactive">* Link to live DV</a></small>
 				</section>				
-				<section data-state="header32">
-					<h1>Placeholder for VIZ</h1>
-				</section>	
-				<section data-state="header33">
-				<style>.header33 header.left:after { content: "Cognitive Considerations of Visualizations"; }</style>
+				<section data-state="cognitive">
+				<style>.cognitive header.left:after { content: "Cognitive Considerations of Visualizations"; }</style>
 					<ul>
 						<li>People use two systems when thinking:</li>
 						<ul>
@@ -388,96 +580,493 @@
 						</ul>
 						<li>Interactive DVs stimulate viewers’ active processing of the information.</li>
 					</ul>
+					<aside class="notes">
+						<ul>
+							<li>Research suggests that some data visualizations may fulfill their role better than the others. DVs that encourage viewers’ engagement with information tend to be more successful at promoting viewers’ learning (Few, 2011). As an example, when viewers are forced to explain the information they are viewing, they are also forced to think about the information carefully, which in turns facilitates their learning.</li>
+							<ul>
+								<li>A theory to explain this outcome:</li>
+								<ul>
+									<li>People use two systems when thinking:</li>
+									<ul>
+										<li>System 1, which relies on intuition and heuristics, and</li>
+										<li>System 2, which relies on careful analytical thinking.</li>
+									</ul>
+									<li>When viewers are engaged in data visualizations, system 2 are triggered, which leads to better processing of the information being presented.</li>
+								</ul>
+								<li>Interactive DVs facilitate a bond between viewers and the DVs. This engagement stimulates viewers’ active processing of the information.</li>
+							</ul>	
+						</ul>
+					</aside>
 				</section>
-				<section data-state="header34">
-				<style>.header34 header.left:after { content: "Demo"; }</style>
+				<section data-state="demo">
+				<style>.demo header.left:after { content: "Demo"; }</style>
 					<h3>Visualizations tailored to key policy issues for countries in transition</h3>
 					<p>Data Visualization Designers:</p>
-					<p><small>Igor, Ariel, Hannah, Giang, Star</small></p>
+					<p><small>Igor Barahona, Ariel Lee, Hannah Cho, Giang Nguyen, Star Ying</small></p>
 				</section>
-				<section data-state="header34">
-					<h1>Placeholder for VIZ</h1>
+				<section data-state="case1">
+				<style>.case1 header.left:after { content: "Case Example Data Visualization 1:"; }</style>
+					<h2>Poverty in Mexico and its Relation with Social Metrics</h2>
+					<h4>Igor Barahona</h4>
 				</section>
-				<section data-state="header34">
-					<h1>Placeholder for VIZ</h1>
+				<section data-state="case2">
+				<style>.case2 header.left:after { content: "Case Example Data Visualization 2:"; }</style>
+					<h2>Women’s Health, Education and Political Empowerment in Developing and Developed Countries and Evidence-Based Policy Implications</h2>
+					<h4>Ariel Lee</h4>
 				</section>
-				<section data-state="header34">
-					<h1>Placeholder for VIZ</h1>
+				<section data-state="case2">
+					<img src="img/matMOR.jpg" width="100%">
+					<aside class="notes">
+						<ul>
+							<li>Maternal mortality was chosen as an indicator for the health of a set of vulnerable women.</li>
+							<li>I thought this data point would show a certain trend that could serve as the basis of my research question.</li>
+							<li>This particular set of box graphs shows the maternal mortality ratio of developing and developed countries in 5 year intervals, from 1990 to 2015.</li>
+							<li>The colors were added in order to help see the different years throughout the presentation.</li>
+							<li>As expected, developing countries had a lower maternal mortality rate.</li>
+							<li>The developing countries definitely had worse maternal mortality across the years.</li>
+							<li>Still, there was less of a difference on average.</li>
+							<li>There may have been a range of countries within developing countries, but the average improved over time.</li>
+							<li>The progress made every five years is apparent.</li>
+							<li>Another point that intrigued me was the presence of certain outliers that needed the most help.</li>
+							<li>Although these definitely improved the most,</li>
+						</ul>
+					</aside>
 				</section>
-				<section data-state="header34">
-					<h1>Placeholder for VIZ</h1>
+				<section data-state="case2">
+					<img src="img/matMORheat.jpg" width="100%">
+					<aside class="notes">
+						<ul>
+							<li>This is a heatmap, showing the same data in a different form.</li>
+							<li>As you can see, the developed countries stayed at a pretty low maternal mortality ratio from the beginning, with some improvement, as seen in the slightly darker hues of purple towards the end of the MDG period.</li>
+							<li>However, there was drastic improvement in developing countries over the 25 year period.</li>
+						</ul>
+					</aside>
 				</section>
-				<section data-state="header34">
-					<h1>Placeholder for VIZ</h1>
+				<section data-state="case2">
+					<img src="img/genPAR_full.png" width="100%">
+					<aside class="notes">
+						<ul>
+							<li>The second indicator chosen was gender parity index in secondary level enrolment.</li>
+							<li>This indicator was meant to show the involvement of girls in education.</li>
+							<li>Whereas primary education increasingly became a given, secondary education was thought to more realistically depict the state of women’s education on basic levels.</li>
+							<li>Gender Parity Index describes a ratio, so closer to 1.0 means that men and women are equally represented.</li>
+							<li>A value larger than one means that women are better represented, and a value less than one means that men are better represented.</li>
+							<li>As you can see there is a huge range for developing countries, although the average for developing and developed countries are similar, around the 1.0 mark.</li>
+							<li>There are many outliers(out-liars) for both developing and developed countries, whether the values are lower or higher than the average.</li>
+							<li>No data was available for the year 2015</li>
+						</ul>
+					</aside>
 				</section>
-				<section data-state="header34">
-					<h1>Placeholder for VIZ</h1>
+				<section data-state="case2">
+					<img src="img/propWOM_full.png">
+					<aside class="notes">
+						<ul>
+							<li>Proportion of seats held by women in national parliament was chosen because political power is considered the highest level of women’s empowerment in the UN,</li>
+							<li>The UN has five sets of data regarding female empowerment: girls in primary school, girls in secondary school, girls in tertiary or higher education, women in non-agricultural sectors of occupation, and women in national parliament,</li>
+							<li>This particular indicator was initially chosen to see whether slow progress for women was due to lack of political representation on their behalf,</li>
+							<li>However, the lesson that I took away from this actually was more oriented towards developed countries,</li>
+							<li>Regarding women in parliament, the range was large on both sides, and overall developed countries have made much more progress that developing countries over the years,</li>
+							<li>In 1990, there was a definite difference seen between developing and developed countries, although developed countries did have a huge range,</li>
+							<li>However, over the years the developing countries have pretty much caught up with developed countries in some cases, although the overall average is slightly lower and there is a huge range,</li>
+							<li>No data was available for the year 1995, but a clear trend can be seen from the data available</li>
+						</ul>
+					</aside>
 				</section>
-				<section data-state="header34">
-					<h1>Placeholder for VIZ</h1>
+				<section data-state="case2">
+					<h3>Implications for Policymakers:</h3>
+					<ul>
+						<li>Focus more on helping certain  developing countries (outliers)</li>
+						<li>Developing countries contain a range of countries</li>
+						<li>Developed countries need to work on women in higher levels of society</li>
+					</ul>
+					<aside class="notes">
+						<ul>
+							<li>The data for maternal mortality, girls in secondary education, and women in parliament was initially used to try to show trends that would help explain trends in developing countries.</li>
+							<li>However, I found the data more important in handing developed countries and how evidence-based policymaking could become more effective.</li>
+							<li>First of all, within every indicator there were a couple countries that were statistically outliers.</li>
+							<li>These countries were the ones bringing down world average.</li>
+							<li>These countries would have to be focused on more than others in the future.</li>
+							<li>Second of all, within the “developing country” category, there was a huge range.</li>
+							<li>Some countries had proportion of seats in national parliament held by women that were equal to or greater than the proportion of most developing countries.</li>
+							<li>Therefore the umbrella term “third world country” or “developing countries” no longer seemed to be a great method of approaching improvement of the world.</li>
+							<li>Third of all, developed countries have to work on their empowerment of women.</li>
+							<li>Relative to the advances in health and education, women are not seeing proportionate involvement in government and politics.</li>
+							<li>This societal problem is one that the developing country is falling behind on, and must focus on in the future.</li>
+							<li>Although the trends seen were not expected, the data has shown tangible results that policymakers can use as guidance in making more informed decisions.</li>
+						</ul>
+					</aside>
 				</section>
-				<section data-state="header34">
-					<h1>Placeholder for VIZ</h1>
+				<section data-state="case3">
+				<style>.case3 header.left:after { content: "Case Example Data Visualization 3:"; }</style>
+					<h2>Malnutrition in Central America and its Relationship to Key Health Conditions</h2>
+					<h4>Hannah Cho</h4>
 				</section>
-				<section data-state="header34">
-					<h1>Placeholder for VIZ</h1>
+				<section data-state="case3_under">
+				<style>.case3_under body{
+					background-image: url('img/propUND_opaque.png'); 
+					height: 100%; 
+					width: 100%;
+					background-repeat: no-repeat;
+					background-position: center;
+					} 
+					header.left:after { content: "Case Example Data Visualization 3:"; }</style>
+					<ul>
+						<li>Percentage of Underweight Children Under Age 5 in Mexico/Central American Region of Developing Economies as defined by World Economic Situation and Prospects 2012</li>
+						<li>Honduras has highest drop in percentage</li>
+						<li>Costa Rica has lowest percentages overall</li>
+						<li>Guatemala has highest percentages overall</li>
+					</ul>
 				</section>
-				<section data-state="header34">
-					<h1>Placeholder for VIZ</h1>
+				<section data-state="case3_under">
+					<img src="img/propUND.jpg" width="85%">
+					<aside class="notes">
+						<ul>
+							<li>In the following slides, you will notice that Costa Rica has the lowest percentages of underweight children, stunting children, incidence of tuberculosis, maternal mortaltiy ratio.</li>
+							<li>It is consistent in its decreasing trend</li>
+							<li>This may be due to the fact that Costa Rica is largely regarded as having the most stable and most democratic government among the Central American countries.</li>
+							<li>https://www.britannica.com/place/Costa-Rica</li>
+						</ul>
+					</aside>
 				</section>
-				<section data-state="header34">
-					<h1>Placeholder for VIZ</h1>
+				<section data-state="case3_stunt">
+				<style>.case3_stunt body{
+					background-image: url('img/prevSTU_opaque.png'); 
+					height: 100%; 
+					width: 100%;
+					background-repeat: no-repeat;
+					background-position: center;
+					} 
+					header.left:after { content: "Case Example Data Visualization 3:"; }</style>
+					<ul>
+						<li>Prevalence of stunting among children under age 5 in Mexico/Central America Region</li>
+						<li>El Salvador has highest drop in percentage</li>
+						<li>Costa Rica has lowest percentages overall</li>
+						<li>Guatemala has highest percentages overall</li>
+					</ul>
 				</section>
-				<section data-state="header34">
-					<h1>Placeholder for VIZ</h1>
+				<section data-state="case3_stunt">
+					<img src="img/prevSTU.jpg", width="85%">
+					<aside class="notes">
+						<ul>
+							<li>Stunting and Underweight are components of health that are indicators of malnutrition.</li>
+							<li>Overall, El Salvador has highest drop in percentage, but from 1990, Honduras has the highest drop in percentage.</li>
+							<li>HOnduras experience reform in health system beginning in 1990 (according to PAHO http://www.paho.org/PAHO-USAID/dmdocuments/Health_System_Profile-Honduras_2009.pdf )</li>
+						</ul>
+					</aside>
 				</section>
-				<section data-state="header34">
-					<h1>Placeholder for VIZ</h1>
+				<section data-state="case3_tub">
+				<style>.case3_tub body{
+					background-image: url('img/incTUB_opaque.png'); 
+					height: 100%; 
+					width: 100%;
+					background-repeat: no-repeat;
+					background-position: center;
+					} 
+					header.left:after { content: "Case Example Data Visualization 3:"; }</style>
+					<ul>
+						<li>Incidence of Tuberculosis per 100,000 people for Mexico/Central America Region</li>
+						<li>Honduras has greatest drop in incidence</li>
+						<li>Costa Rica has lowest incidence overall</li>
+					</ul>
 				</section>
-				<section data-state="header34">
-					<h1>Placeholder for VIZ</h1>
+				<section data-state="case3_tub">
+					<img src="img/incTUB.jpg", width="85%">
+					<aside class="notes">
+						<ul>
+							<li>Guatemala has incidences throughout the years that are consistently higher than the other countries, as opposed to Honduras in which there is a steep drop in incidences.</li>
+							<li>Honduras has highest drop in percentage, reflecting its highest drops in percentage of stunting and underweight children.</li>
+							<li>Drop in incidence seems to correspond with the drop in percentage of underweight children</li>
+							<li>Costa Rica has the lowest percentages of stunting and underweight children, in addition to the lowest percentages of incidence of tuberculosis.</li>
+						</ul>
+					</aside>
 				</section>
-				<section data-state="header34">
-					<h1>Placeholder for VIZ</h1>
+				<section data-state="case3_mat">
+				<style>.case3_mat body{
+					background-image: url('img/MMR_opaque.png'); 
+					height: 100%; 
+					width: 100%;
+					background-repeat: no-repeat;
+					background-position: center;
+					} 
+					header.left:after { content: "Case Example Data Visualization 3:"; }</style>
+					<ul>
+						<li>Maternal mortality ratio per 100,000 live births</li>
+						<li>Honduras has the steepest drop from 1990 to 2000</li>
+						<li>Costa Rica has lowest percentages</li>
+						<li>Overall, Nicaragua has highest percentages</li>
+					</ul>
 				</section>
-				<section data-state="header34">
-					<h1>Placeholder for VIZ</h1>
+				<section data-state="case3_mat">
+					<img src="img/MMR.jpg", width="85%">
+					<aside class="notes">
+						<ul>
+							<li>In Honduras, drop in maternal mortality is before the drop in incidence of tuberculosis by approximately 10 years</li>
+						</ul>
+					</aside>
 				</section>
-				<section data-state="header34">
-					<h1>Placeholder for VIZ</h1>
+				<section data-state="case3">
+					<h3>Implications for Policymakers:</h3>
 				</section>
-				<section data-state="header34">
-					<h1>Placeholder for VIZ</h1>
+				<section data-state="case4">
+				<style>.case4 header.left:after { content: "Case Example Data Visualization 4:"; }</style>
+					<h2>Malnutrition in DPRK (North Korea) and Evidence-based Policy Implications</h2>
+					<h4>Giang Nguyen</h4>
 				</section>
-				<section data-state="header34">
-					<h1>Placeholder for VIZ</h1>
+				<section data-state="case4_mmrgeo">
+				<style>.case4_mmrgeo body{
+					background-image: url('img/MMRGEO_opaque.png'); 
+					height: 100%; 
+					width: 100%;
+					background-repeat: no-repeat;
+					background-position: center;
+					} 
+					header.left:after { content: "Case Example Data Visualization 4:"; }</style>
+					<h3>Maternal mortality rate (MMR) in the DPRK (DPRK 2008 Census, Table 18)</h3>
+					<ul>
+						<li>MMR = (number of maternal deaths/ number of live births)*100,000</li>
+						<li>Ryanggang has  the highest MMR.</li>
+						<li>Pyongyang has the lowest MMR.</li>
+					</ul>
+
 				</section>
-				<section data-state="header34">
-					<h1>Placeholder for VIZ</h1>
+				<section data-state="case4_mmrgeo">
+					<img src="img/MMRGEO.jpg" width="70%">
+					<aside class="notes">
+						<ul>
+							<li>We are presenting some of the data visualizations that we developed--the ones that might be the most relevant to the research community, UN agencies, and NGOs.</li>
+							<li>This is a visualization of maternal mortality rate by province in 2008.</li>
+							<li>MMR is a health metric often used by the World Bank, WHO, and other agencies to make international comparison of mothers’ health.</li>
+							<li>From the 2008 Census, we created the MMR variable as the number of women who die from pregnancy-related causes per 100,000 live births.</li>
+							<li>Northern provinces such as Ryanggang, North Hamgyong and North Phyonggan have the highest MMR, while Pyongyang has the lowest MMR.</li>
+							<li>Note that North Hwanghae, which is close to Pyongyang, has the second lowest MMR in the nation.</li>
+						</ul>
+					</aside>
 				</section>
-				<section data-state="header34">
-					<h1>Placeholder for VIZ</h1>
+				<section data-state="case4_perhos">
+				<style>.case4_perhos body{
+					background-image: url('img/perHOS_opaque.png'); 
+					height: 100%; 
+					width: 100%;
+					background-repeat: no-repeat;
+					background-position: center;
+					} 
+					header.left:after { content: "Case Example Data Visualization 4:"; }</style>
+					<h3>Percentage of maternal deaths at hospital (DPRK 2008 Census, table 18)</h3>
+					<ul>
+						<li>Percentage = (number of maternal deaths at hospital/ number of maternal deaths)*100</li>
+						<li>Pyongyang has the highest percentage</li>
+						<li>Ryanggang, South Hamgyong and Kangwon have the lowest percentages.</li>
+					</ul>
+
 				</section>
-				<section data-state="header34">
-					<h1>Placeholder for VIZ</h1>
+				<section data-state="case4_perhos">
+					<img src="img/perHOS.jpg" width="70%">
+					<aside class="notes">
+						<ul>
+							<li>We use the same data table in the 2008 Census to visualize the percentage of maternal deaths at hospital.</li>
+							<li>The percentage of maternal deaths at hospital is calculated as a percentage of the total number of maternal deaths.</li>
+							<li>The other places of deaths are “at home” and “elsewhere”.</li>
+							<li>Pyongyang has the highest percentage, while Ryanggang, South Hamgyong and Kangwon have the lowest percentages.</li>
+						</ul>
+					</aside>
 				</section>
-				<section data-state="header34">
-					<h1>Placeholder for VIZ</h1>
+				<section data-state="case4_topnk">
+				<style>.case4_topnk body{
+					background-image: url('img/topNK_opaque.png'); 
+					height: 100%; 
+					width: 100%;
+					background-repeat: no-repeat;
+					background-position: center;
+					} 
+					header.left:after { content: "Case Example Data Visualization 4:"; }</style>
+					<h3>Implications for policymakers: quality of facilities, transportation, and weather</h3>
+					<ul>
+						<li>Ryanggang is mountainous. Difficult access to the hospitals.</li>
+						<li>80% of DPRK  is mountains and uplands. Winters are long and cold.</li>
+						<li>Topographical structure and weather can present challenges to citizens in the northeast.</li>
+						<li>Health facility in developing countries.</li>
+					</ul>
+
 				</section>
-				<section data-state="header34">
-					<h1>Placeholder for VIZ</h1>
+				<section data-state="case4_topnk">
+					<img src="img/topNK.jpg" width="75%">
+					<aside class="notes">
+						<ul>
+							<li>A possible explanation is that the capital has better hospital facilities; therefore, deaths occur at the hospital, as opposed to at home or elsewhere. The three aforementioned provinces, which have the lowest percentages of deaths at hospital, are located in mountainous areas. Therefore, citizens of those provinces might have difficulty accessing the hospital.</li>
+							<li>more important question: health facility in developing countries</li>
+						</ul>
+					</aside>
 				</section>
-				<section data-state="header34">
-					<h1>Placeholder for VIZ</h1>
+				<section data-state="case4">
+					<h3>Chronic malnutrition (stunting)</h3>
+					<ul>
+						<li>Defined from the height of age (H/A) index, expressed in z-score (HAZ)</li>
+						<li>HAZ represents the number of standard deviations units from the median of the WHO 2006 reference population.</li>
+						<li>Global stunting is defined as HAZ < -2 SD.</li>
+						<li>Moderate stunting is defined as HAZ < -2 SD and >= -3 SD.</li>
+						<li>Severe stunting is defined as HAZ < -3 SD.</li>
+						<li>Stunting is irreversible after 24 months of age.</li>
+					</ul>
 				</section>
-				<section data-state="header35">
-				<style>.header35 header.left:after { content: "Implications for policymakers"; }</style>
-				<ul>
-					<li>In general, the undernourished population has decreased over time.</li>
-					<li>In 2015, there were still countries whose undernourished population falls between 40% and 60%. This is an alarmingly high number and effort needs to made to improve the situation in these countries.</li>
-					<li>Most of the countries with high undernourished population are in Africa. Policymakers could invest resources in Africa to improve the issue of undernourishment.</li>
-					<li>When observed over time, some countries fluctuate in their undernourished population. Policymakers might wish to investigate the reasons for the fluctuation and work to ensure sustainable development.</li>
-				</ul>
+				<section data-state="case4_stu">
+				<style>.case4_stu body{
+					background-image: url('img/globSTU_opaque.png'); 
+					height: 100%; 
+					width: 100%;
+					background-repeat: no-repeat;
+					background-position: center;
+					} 
+					header.left:after { content: "Case Example Data Visualization 4:"; }</style>
+					<h3>Global stunting in children in the DPRK (NNS 2012, Table 6.2)</h3>
+					<ul>
+						<li>Ryanggang has the highest prevalence.</li>
+						<li>Pyongyang has the lowest.</li>
+						<li>As the provinces get further away from Pyongyang, mal</li>nutrition seems to increase in intensity. 
+					</ul>
+				</section>
+				<section data-state="case4_stu">
+					<img src="img/globSTU.jpg" width="70%">
+					<aside class="notes">
+						<ul>
+							<li>We observe that the provinces that suffer from higher prevalence of malnutrition, such as Ryanggang, Jagang, and Kangwon, are mountainous provinces.</li>
+							<li>On the contrary, provinces with lower prevalence such as Pyongyang, South Hwanghae, and South Phyongan enjoy a sea-level structure.</li>						
+						</ul>
+					</aside>
+				</section>
+				<section data-state="case4">
+					<h3>Acute malnutrition (wasting) </h3>
+					<ul>
+						<li>Estimated from the weight for height (W/H) index, expressed in z-score (WHZ)</li>
+						<li>WHZ represents the number of standard deviations units from the median of the WHO 2006 reference population.</li>
+						<li>Global wasting is defined as WHZ < -2 SD.</li>
+						<li>Moderate wasting is defined as WHZ < -2 SD and >= -3 SD.</li>
+						<li>Severe wasting is defined as WHZ < -3 SD.</li>
+					</ul>
+				</section>
+				<section data-state="case4_was">
+				<style>.case4_was body{
+					background-image: url('img/globWAS_opaque.png'); 
+					height: 100%; 
+					width: 100%;
+					background-repeat: no-repeat;
+					background-position: center;
+					} 
+					header.left:after { content: "Case Example Data Visualization 4:"; }</style>
+					<h3>Global wasting in children in the DPRK (NNS 2012, Table 6.3)</h3>
+					<ul>
+						<li>Ryanggang has the highest prevalence.</li>
+						<li>Pyongyang has the lowest.</li>
+						<li>As the provinces get further away from Pyongyang, malnutrition seems to increase in intensity.</li> 
+					</ul>
+				</section>
+				<section data-state="case4_was">
+					<img src="img/globWAS.jpg" width="70%">
+					<aside class="notes">
+						<ul>
+							<li>The elite capital?</li>
+							<li>Ryanggang needs a lot of help</li>
+						</ul>
+					</aside>
+				</section>
+				<section data-state="case4_force">
+				<style>.case4_force body{
+					background-image: url('img/forceMIG_opaque.png'); 
+					height: 100%; 
+					width: 100%;
+					background-repeat: no-repeat;
+					background-position: center;
+					} 
+					header.left:after { content: "Case Example Data Visualization 4:"; }</style>
+					<h3>Policy implications</h3>
+					<ul>
+						<li>Jagang and Ryanggang have the highest prevalence of malnutrition.</li>
+						<li>These provinces have little migration, mainly migration to Pyongyang.</li>
+						<li>Citizens unable to migrate to avoid stunting?</li>
+					</ul>
+				</section>
+				<section data-state="case4_force">
+					<img src="img/forceMIG.jpg" width="100%">
+					<aside class="notes">
+						<ul>
+							<li>In the previous DV series, we mentioned that citizens of Ryanggang have the worst health conditions but appear immobile. We plotted global chronic malnutrition in children aged 24-59.9 months as a heat map.</li>
+							<li>The arrows represent net migration; their widths are scaled to size.</li>
+							<li>Viewers can click and drag each province, if they wish to examine the province and its net migration.</li>
+							<li>Takeaway:  provinces with the worst malnutrition, namely Jagang and Ryanggang, appear isolated. These provinces have little migration, and their citizens mainly migrate to Pyongyang. A pressing observation arises: citizens of these areas are suffering from stunting, yet they are unable to escape that situation.</li>
+						</ul>
+					</aside>
+				</section>
+				<section data-state="case4_scale">
+				<style>.case4_scale body{
+					background-image: url('img/scaleMAL_opaque.png'); 
+					height: 100%; 
+					width: 100%;
+					background-repeat: no-repeat;
+					background-position: center;
+					} 
+					header.left:after { content: "Case Example Data Visualization 4:"; }</style>
+					<h3>Policy implications</h3>
+					<ul>
+						<li>Each type of malnutrition takes up a considerable amount of the landmass in each province.</li>
+						<li>Global and moderate acute malnutrition show very little difference.</li>
+						<li>In order to tackle acute malnutrition, we must simultaneously face global and moderate cases</li>
+					</ul>
+				</section>
+				<section data-state="case4_scale">
+					<img src="img/scaleMAL.jpg" width="100%">
+					<aside class="notes">
+						<ul>
+							<li>Malnutrition in children can have damaging long term consequences, as it affects the future generation of a nation. In the interactive visualization “Scaling Malnutrition to the DPRK”, we allow users to choose to display chronic or acute malnutrition (or both) on a map of the  DPRK.</li>
+							<li>Chronic malnutrition, or Stunting (red). The prevalence of chronic malnutrition were scaled against the total landmass of each province. Three levels of stunting are displayed, severe being the darkest shade of red, followed by moderate, and global has the lightest shade of red. Scale the coordinates of each province boundary by the square root of the prevalence of each province.</li>
+							<li>Wasting (blue).  Prevalence of wasting is also displayed as land areas. Three levels of severity of wasting are displayed: the deepest shade of blue is severe, followed by moderate, and global has the lightest shade of blue.</li>
+							<li>Takeaways: first, Each type of malnutrition takes up a considerable amount of the landmass in each province (show red, then blue). Thus we should treat malnutrition for all provinces, not just the capital.</li>
+							<li>second, global and moderate acute malnutrition show very little difference (show blue). The boundaries of global and moderate wasting almost perfectly coincide. A child that is afflicted with global acute malnutrition is actually already under moderate acute malnutrition. The implication of this trend is significant for non-governmental organizations and humanitarian efforts: In order to tackle acute malnutrition, we must simultaneously face global and moderate cases.</li>
+						</ul>
+					</aside>
+				</section>
+				<section data-state="case5">
+				<style>.case5 header.left:after { content: "Case Example Data Visualization 5:"; }</style>
+					<h2>Interactive DVs of Public Health Issues</h2>
+					<h4>Giang Nguyen</h4>
+				</section>
+				<section data-state="case5_hist">
+				<style>.case5_hist body{
+					background-image: url('img/intHIST_opaque.png'); 
+					height: 100%; 
+					width: 100%;
+					background-repeat: no-repeat;
+					background-position: center;
+					} 
+					header.left:after { content: "Case Example Data Visualization 5:"; }</style>
+				</section>
+				<section data-state="case5_hist">
+					<img src="img/intHIST.jpg" width="100%">
+				</section>
+				<section data-state="case5_leaflet">
+				<style>.case5_leaflet body{
+					background-image: url('img/worldMAL_opaque.png'); 
+					height: 100%; 
+					width: 100%;
+					background-repeat: no-repeat;
+					background-position: center;
+					} 
+					header.left:after { content: "Case Example Data Visualization 5:"; }</style>
+				</section>
+				<section data-state="case5_leaflet">
+					<img src="img/worldMAL.jpg" width="100%">
+				</section>
+				<section data-state="case5">
+					<h3>Implications for policymakers</h3>
+					<ul>
+						<li>In general, the undernourished population has decreased over time.</li>
+						<li>In 2015, there were still countries whose undernourished population falls between 40% and 60%. This is an alarmingly high number and effort needs to made to improve the situation in these countries.</li>
+						<li>Most of the countries with high undernourished population are in Africa. Policymakers could invest resources in Africa to improve the issue of undernourishment.</li>
+						<li>When observed over time, some countries fluctuate in their undernourished population. Policymakers might wish to investigate the reasons for the fluctuation and work to ensure sustainable development.</li>
+					</ul>
+				</section>
+				<section data-state="case6">
+				<style>.case6 header.left:after { content: "Case Example Data Visualization 6:"; }</style>
+					<h2>nteractive DVs of Social and Education Issues in Developing Countries and Evidence-Based Policy Implications</h2>
+					<h4>Star Ying</h4>
 				</section>
 				<section data-state="header35">
 				<style>.header35 header.left:after { content: "Impediments to creating/using Development Goal Indicators"; }</style>
@@ -505,7 +1094,7 @@
 					<ul>
 						<li>We can use data visualizations of existing indicators to determine where nations are falling behind</li>
 						<li>Supplement existing indicators with data from instruments that allow us to identify intervention points</li>
-						<li>Can we use aternative data sources?</li>
+						<li>Can we use alternative data sources?</li>
 						<ul>
 							<li>administrative records,</li>
 							<li>cellphone usage,</li>
@@ -521,8 +1110,8 @@
 					<img src="data/image/Vietnam/vietnam.gif" style="width:250px"> -->
 					<p>Example: Using Satellite imagery in conjunction with MDG Indicators</p>
 					<p>North Korea vs South Korea</p>
-					<img src="data/image/North Korea/north-korea.gif" style="width:350px">
-					<img src="data/image/South Korea/south-korea.gif" style="width:350px">
+					<img src="data/image/North Korea/north-korea.gif" style="width:400px">
+					<img src="data/image/South Korea/south-korea.gif" style="width:400px">
 				</section>
 				<section data-state="header37">
 					<p>Monthly Average Radiance Levels of various Asian Nations from 2014 to present</p>
@@ -585,7 +1174,7 @@
 					</script>
 				</section>
 				<section data-state="header37">
-					<p>Monthly Average Radiance Levels of North Korean Provinces from 2014 to present</p>
+					<p>Monthly Average Radiance Levels of the Korean Peninsula Provinces from 2014 to present</p>
 					<div id="timeseries_kor" style="width:900px; height:300px; text-align:center"></div>
 					<div id="timeseries_kor_legend" style="width:900px; font-size:12px;"></div>
 					<script type="text/javascript">
@@ -691,6 +1280,7 @@
 				history: true,
 				controls: false,
 				progress: true,
+				slideNumber: true,
 
 				// More info https://github.com/hakimel/reveal.js#dependencies
 				dependencies: [
