@@ -4,15 +4,15 @@
 <style>
 
 path {
-  fill: #ff0000;
-  stroke: #fff;
-  stroke-width: 1.5px;
+  fill: #c0392b;
+  stroke: #95a5a6;
+  stroke-width: .5px;
 }
 
 path.link {
   fill: none;
-  stroke: #0000ff;
-  opacity: .5;
+  stroke: #3498db;
+  opacity: 1;
 }
 
 text { 
@@ -32,7 +32,7 @@ text {
 <script src="js/topojson.min.js"></script>
 <script>
 
-var width = 800,
+var width = 900,
     height = 400;
 
 var projection = d3.geo.mercator();
@@ -121,21 +121,25 @@ d3.json("dprk_mig_combined.json", function(error, mig) {
       .attr("orient", "auto")
     .append("svg:path")
       .attr("d", "M0,-5L10,0L0,5")
-      .style("fill", "#0000ff");
+      .style("fill", "#3498db");
 
   var link = svg.append("svg:g").selectAll("path")
       .data(links)
     .enter().append("svg:path")
       .attr("class", "link")
       .attr("marker-end", "url(#end)")
-      .style("stroke-width", function(d) { return d.value/800 +"px" });
+      .style("stroke-width", function(d) { return d.value/1000 +"px" });
 
 
   var labels = svg.selectAll("text")
     .data(nodes)
   .enter().append("text")
     .attr("dy", ".35em")
-    .text(function(d) { return d.feature.properties["name"] + ": " + d.feature.properties["health"] + "%"; });
+    .text(function(d) { return ""; });
+
+  // var legend= svg.append("g")
+  //     .attr("class", "legend")
+  //     .append("rect")
 
   // svg.append("svg:text")
   //   .attr("x", width/2 + 100)
