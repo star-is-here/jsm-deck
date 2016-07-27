@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Scaling Global Malnutrition to the DPRK</title>
+<style>
+
+.land {
+  fill: #c0392b;
+  stroke: #ecf0f1;
+  opacity: .5;
+}
+
+.global {
+  fill: #e67e22;
+}
+
+.moderate {
+  fill: #cc0000;
+}
+
+.severe {
+  fill: #990000;
+}
+
+.acuteglobal {
+  fill: #3498db;
+}
+
+.acutemoderate {
+  fill: #007acc;
+}
+
+.acutesevere {
+  fill: #005c99;
+}
+
+.rescale {
+  fill: #c0392b;
+  stroke: #7f8c8d;
+  stroke-width: 1;
+}
+
+</style>
+<body>
+<!-- <script src="d3/d3.js"></script> -->
+<!-- <script src="topojson/topojson.js"></script> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.19/topojson.min.js"></script> -->
+<script src="js/d3.min.js"></script>
+<script src="js/topojson.min.js"></script>
+<script>
+
+// var valueById = [
+//    NaN, .187, .198,  NaN, .133, .175, .151,  NaN, .100, .125,
+//   .171,  NaN, .172, .133,  NaN, .108, .142, .167, .201, .175,
+//   .159, .169, .177, .141, .163, .117, .182, .153, .195, .189,
+//   .134, .163, .133, .151, .145, .130, .139, .169, .164, .175,
+//   .135, .152, .169,  NaN, .132, .167, .139, .184, .159, .140,
+//   .146, .157,  NaN, .139, .183, .160, .143
+// ];
+
+// Malnutrition of DPRK
+var malnut = [
+  {
+    "province": "Ryanggang",
+    "popnum": "719,269",
+    "fips": "KN03",
+    "area": 11.71,
+    "pop": 3.08,
+    "global": 39.6,
+    "moderate": 27.5,
+    "severe": 12.1,
+    "acute-global": 6.1,
+    "acute-moderate": 5,
+    "acute-severe": 1.1
+  },
+  {
+    "province": "North Hamgyong",
+    "popnum": "2,327,362",
+    "fips": "KN04",
+    "area": 13.48,
+    "pop": 9.96,
+    "global": 28.7,
+    "moderate": 20.5,
+    "severe": 8.2,
+    "acute-global": 4.8,
+    "acute-moderate": 4.2,
+    "acute-severe": 0.6
+  },
+  {
+    "province": "South Hamgyong",
+    "popnum": "3,066,013",
+    "fips": "KN13",
+    "area": 15.63,
+    "pop": 13.13,
+    "global": 32.9,
+    "moderate": 23.5,
+    "severe": 9.4,
+    "acute-global": 4.3,
+    "acute-moderate": 3.6,
+    "acute-severe": 0.7
+  },
+  {
+    "province": "Kangwon",
+    "popnum": "1,477,582",
+    "fips": "KN09",
+    "area": 9.35,
+    "pop": 6.32,
+    "global": 28.6,
+    "moderate": 20.7,
+    "severe": 7.9,
+    "acute-global": 4.7,
+    "acute-moderate": 3.9,
+    "acute-severe": 0.7
+  },
+  {
+    "province": "Jagang",
+    "popnum": "1,299,830",
+    "fips": "KN01",
+    "area": 14.14,
+    "pop": 5.56,
+    "global": 33.3,
+    "moderate": 23.6,
+    "severe": 9.8,
+    "acute-global": 5.7,
+    "acute-moderate": 5,
+    "acute-severe": 0.7
+  },
+  {
+    "province": "North Phyongan",
+    "popnum": "2,728,662",
+    "fips": "KN11",
+    "area": 10.69,
+    "pop": 11.68,
+    "global": 29.4,
+    "moderate": 21.3,
+    "severe": 8.1,
+    "acute-global": 3.8,
+    "acute-moderate": 3.5,
+    "acute-severe": 0.4
+  },
+  {
+    "province": "South Phyongan",
+    "popnum": "4,051,696",
+    "fips": "KN10",
+    "area": 10.03,
+    "pop": 17.35,
+    "global": 25.8,
+    "moderate": 21.2,
+    "severe": 4.6,
+    "acute-global": 3.6,
+    "acute-moderate": 3.2,
+    "acute-severe": 0.4
+  },
+  {
+    "province": "North Hwanghae",
+    "popnum": "2,113,672",
+    "fips": "KN07",
+    "area": 6.87,
+    "pop": 9.05,
+    "global": 28.7,
+    "moderate": 20.6,
+    "severe": 8.1,
+    "acute-global": 4.4,
+    "acute-moderate": 3.6,
+    "acute-severe": 0.8
+  },
+  {
+    "province": "South Hwanghae",
+    "popnum": "2,310,485",
+    "fips": "KN06",
+    "area": 7.12,
+    "pop": 9.89,
+    "global": 25.6,
+    "moderate": 18.9,
+    "severe": 6.7,
+    "acute-global": 3.3,
+    "acute-moderate": 2.9,
+    "acute-severe": 0.5
+  },
+  {
+    "province": "Pyongyang",
+    "popnum": "3,255,288",
+    "fips": "KN12",
+    "area": 0.92,
+    "pop": 13.94,
+    "global": 19.6,
+    "moderate": 15.6,
+    "severe": 4,
+    "acute-global": 2.3,
+    "acute-moderate": 1.9,
+    "acute-severe": 0.4
+  }
+];
+
+var width = 890,
+    height = 390;
+
+var projection = d3.geo.mercator();
+
+var path = d3.geo.path().projection(projection);
+
+var svg = d3.select("body").append("svg")
+    .attr("width", 1400)
+    .attr("height", 800);
+
+d3.json("dprktopo.json", function(error, dprk) {
+
+  projection
+      .scale(1)
+      .translate([0, 0]);
+
+  var b = path.bounds(topojson.feature(dprk, dprk.objects.dprkgeo)),
+      s = .95 / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height),
+      t = [(width - s * (b[1][0] + b[0][0])) / 2, (height - s * (b[1][1] + b[0][1])) / 2];
+
+  projection
+      .scale(s)
+      .translate(t);
+
+  var dprkgeo = topojson.feature(dprk, dprk.objects.dprkgeo).features
+
+  var dprkprov = []
+
+  dprkgeo.forEach(function(province){
+    if (province.properties["hc-key"] === "kp-5044" || province.properties["hc-key"] === "kp-nj") return;
+    province.properties.health = malnut.filter(function(prov){
+      return province.properties.name === prov.province
+    })[0];
+    dprkprov.push(province)
+  });
+
+  // svg.append("path")
+  //     .datum(topojson.feature(dprk, dprk.objects.dprkgeo))
+  //     .attr("class", "land")
+  //     .attr("d", path)
+  //     .on("mouseover", popup);
+
+  svg.selectAll(".land")
+    .data(dprkprov)
+    .enter().append("path")
+    .attr("class", "land")
+    .attr("id", function(d){ return d.properties.health["fips"] + "_regular"; })
+    .attr("d", path)
+    .attr("transform", function(d) {
+      var centroid = path.centroid(d),
+          x = centroid[0],
+          y = centroid[1];
+      return "translate(" + x + "," + y + ")"
+          + "scale(" + 1 + ")"
+          + "translate(" + -x + "," + -y + ")";
+    })
+    .style("opacity", 1)
+    .on("mouseover", popup)
+    .on("mouseout", popupout);
+
+  // Blank Rescaled Province
+  svg.selectAll(".rescale")
+      .data(dprkprov)
+    .enter().append("path")
+      .attr("class", "rescale")
+      .attr("id", function(d){ return d.properties.health["fips"] + "_rescale"; })
+      .attr("d", path)
+      .attr("transform", function(d) {
+        var centroid = path.centroid(d),
+            x = centroid[0],
+            y = centroid[1];
+        return "translate(" + x + "," + y + ")"
+            + "scale(" + Math.sqrt(d.properties.health["pop"]/d.properties.health["area"] || 0) + ")"
+            + "translate(" + -x + "," + -y + ")";
+      })
+      .style("opacity", 0)
+      .style("pointer-events", "none");
+
+  // Global Chronic Malnutrition
+  svg.selectAll(".global")
+      .data(dprkprov)
+    .enter().append("path")
+      .attr("class", "global")
+      .attr("id", function(d){ return d.properties.health["fips"] + "_global"; })
+      .attr("d", path)
+      .attr("transform", function(d) {
+        var centroid = path.centroid(d),
+            x = centroid[0],
+            y = centroid[1];
+        return "translate(" + x + "," + y + ")"
+            + "scale(" + Math.sqrt(d.properties.health["pop"]/d.properties.health["area"] * d.properties.health["global"]/100 || 0) + ")"
+            + "translate(" + -x + "," + -y + ")";
+      })
+      // .style("stroke-width", function(d) {
+      //   return 1 / Math.sqrt(d.properties.health["global"]/100 || 1);
+      // })
+      .style("pointer-events", "none")
+      .style("opacity", 0);
+
+  // // Moderate Chronic Malnutrition
+  // svg.selectAll(".moderate")
+  //     .data(dprkprov)
+  //   .enter().append("path")
+  //     .attr("class", "moderate")
+  //     .attr("id", "moderate")
+  //     .attr("d", path)
+  //     .attr("transform", function(d) {
+  //       var centroid = path.centroid(d),
+  //           x = centroid[0],
+  //           y = centroid[1];
+  //       return "translate(" + x + "," + y + ")"
+  //           + "scale(" + Math.sqrt(d.properties.health["moderate"]/100 || 0) + ")"
+  //           + "translate(" + -x + "," + -y + ")";
+  //     })
+  //     .style("stroke-width", function(d) {
+  //       return 1 / Math.sqrt(d.properties.health["moderate"]/100 || 1);
+  //     })
+  //     .style("opacity", 0);
+
+  // // Severe Chronic Malnutrition
+  // svg.selectAll(".severe")
+  //     .data(dprkprov)
+  //   .enter().append("path")
+  //     .attr("class", "severe")
+  //     .attr("id", "severe")
+  //     .attr("d", path)
+  //     .attr("transform", function(d) {
+  //       var centroid = path.centroid(d),
+  //           x = centroid[0],
+  //           y = centroid[1];
+  //       return "translate(" + x + "," + y + ")"
+  //           + "scale(" + Math.sqrt(d.properties.health["severe"]/100 || 0) + ")"
+  //           + "translate(" + -x + "," + -y + ")";
+  //     })
+  //     .style("stroke-width", function(d) {
+  //       return 1 / Math.sqrt(d.properties.health["severe"]/100 || 1);
+  //     })
+  //     .style("opacity", 0);
+
+  // Global Acute Malnutrition
+  svg.selectAll(".acuteglobal")
+      .data(dprkprov)
+    .enter().append("path")
+      .attr("class", "acuteglobal")
+      .attr("id", function(d){ return d.properties.health["fips"] + "_acuteglobal"; })
+      .attr("d", path)
+      .attr("transform", function(d) {
+        var centroid = path.centroid(d),
+            x = centroid[0],
+            y = centroid[1];
+        return "translate(" + x + "," + y + ")"
+            + "scale(" + Math.sqrt(d.properties.health["pop"]/d.properties.health["area"] * d.properties.health["acute-global"]/100 || 0) + ")"
+            + "translate(" + -x + "," + -y + ")";
+      })
+      // .style("stroke-width", function(d) {
+      //   return 1 / Math.sqrt(d.properties.health["acute-global"]/100 || 1);
+      // })
+      .style("pointer-events", "none")
+      .style("opacity", 0);
+
+  // // Moderate Acute Malnutrition
+  // svg.selectAll(".acutemoderate")
+  //     .data(dprkprov)
+  //   .enter().append("path")
+  //     .attr("class", "acutemoderate")
+  //     .attr("id", "acutemoderate")
+  //     .attr("d", path)
+  //     .attr("transform", function(d) {
+  //       var centroid = path.centroid(d),
+  //           x = centroid[0],
+  //           y = centroid[1];
+  //       return "translate(" + x + "," + y + ")"
+  //           + "scale(" + Math.sqrt(d.properties.health["acute-moderate"]/100 || 0) + ")"
+  //           + "translate(" + -x + "," + -y + ")";
+  //     })
+  //     .style("stroke-width", function(d) {
+  //       return 1 / Math.sqrt(d.properties.health["acute-moderate"]/100 || 1);
+  //     })
+  //     .style("opacity", 0);
+
+  // // Severe Acute Malnutrition
+  // svg.selectAll(".acutesevere")
+  //     .data(dprkprov)
+  //   .enter().append("path")
+  //     .attr("class", "acutesevere")
+  //     .attr("id", "acutesevere")
+  //     .attr("d", path)
+  //     .attr("transform", function(d) {
+  //       var centroid = path.centroid(d),
+  //           x = centroid[0],
+  //           y = centroid[1];
+  //       return "translate(" + x + "," + y + ")"
+  //           + "scale(" + Math.sqrt(d.properties.health["acute-severe"]/100 || 0) + ")"
+  //           + "translate(" + -x + "," + -y + ")";
+  //     })
+  //     .style("stroke-width", function(d) {
+  //       return 1 / Math.sqrt(d.properties.health["acute-severe"]/100 || 1);
+  //     })
+  //     .style("opacity", 0)
+  //     .style("z-index", -10);
+
+  function popup() {
+    d3.select(this)
+      .style("stroke", "#bdc3c7")
+      .style("fill", "#ecf0f1");
+    name = d3.select(this).datum().properties.fips,
+    title = d3.select(this).datum().properties.name,
+    pop = d3.select(this).datum().properties.health["popnum"]
+    chronicGlobal = d3.select(this).datum().properties.health["global"]
+    acuteGlobal = d3.select(this).datum().properties.health["acute-global"];
+    d3.select("#" + name + "_rescale")
+      .style("opacity", 1);
+    d3.select("#" + name + "_global")
+      .style("opacity", 1);
+    d3.select("#" + name + "_acuteglobal")
+      .style("opacity", 1);
+    d3.select("#legend_province")
+      .text(title+" ("+pop+"):");
+    d3.select("#legend_global")
+      .text(chronicGlobal+"%");
+    d3.select("#legend_acuteglobal")
+      .text(acuteGlobal+"%");
+  };
+
+  function popupout() {
+    d3.select(this)
+      .style("stroke", "#ecf0f1")
+      .style("fill", "#c0392b");
+    name = d3.select(this).datum().properties.fips;
+    d3.select("#" + name + "_rescale")
+      .style("opacity", 0);
+    d3.select("#" + name + "_global")
+      .style("opacity", 0);
+    d3.select("#" + name + "_acuteglobal")
+      .style("opacity", 0);
+    d3.select("#legend_province")
+      .text("Province (Population):");
+    d3.select("#legend_global")
+      .text("Global Chronic Malnutrition");
+    d3.select("#legend_acuteglobal")
+      .text("Global Acute Malnutrition");
+  };
+
+  svg.append("text")
+    .attr("class", "legend")
+    .attr("id", "legend_province")
+    .attr("x", 10)
+    .attr("y", 20)
+    .style("text-anchor", "start")
+    .style("font-size", "20px")
+    .style("fill", "#c0392b")
+    .text("Province (Population):");
+
+  svg.append("text")
+    .attr("class", "legend")
+    .attr("id", "legend_global")
+    .attr("x", 10)
+    .attr("y", 40)
+    .style("text-anchor", "start")
+    .style("font-size", "20px")
+    .style("fill", "#e67e22")
+    .text("Global Chronic Malnutrition");
+
+  svg.append("text")
+    .attr("class", "legend")
+    .attr("id", "legend_acuteglobal")
+    .attr("x", 10)
+    .attr("y", 60)
+    .style("text-anchor", "start")
+    .style("font-size", "20px")
+    .style("fill", "#3498db")
+    .text("Global Acute Malnutrition");
+
+  // svg.append("svg:text")
+  // .attr("x", 0)             
+  // .attr("y", height - 45)    
+  // .attr("class", "legend")
+  // .style("fill", "#000")         
+  // .on("click", function(){
+  //   var active   = global.active ? false : true,
+  //     newOpacity = active ? 1 : 0;
+  //   // Hide or show the elements
+  //   d3.selectAll("#global").style("opacity", newOpacity);
+  //   d3.selectAll("#moderate").style("opacity", newOpacity);
+  //   d3.selectAll("#severe").style("opacity", newOpacity);
+  //   // Update whether or not the elements are active
+  //   global.active = active;
+  // })
+  // .text("Chronic Malnutrition:")
+  // .append("svg:tspan")
+  // .attr("x", 50)             
+  // .attr("y", height - 30)  
+  // .attr("class","global")
+  // .text("Global")
+  // .append("svg:tspan")
+  // .attr("x", 50)             
+  // .attr("y", height - 15) 
+  // .attr("class","moderate")
+  // .text("Moderate")
+  // .append("svg:tspan")
+  // .attr("x", 50)             
+  // .attr("y", height)  
+  // .attr("class","severe")
+  // .text("Severe");
+
+  // svg.append("svg:text")
+  // .attr("x", width - 200)             
+  // .attr("y", height - 45)    
+  // .attr("class", "legend")
+  // .style("fill", "#000")         
+  // .on("click", function(){
+  //   var active   = acuteglobal.active ? false : true,
+  //     newOpacity = active ? 1 : 0;
+  //   // Hide or show the elements
+  //   d3.selectAll("#acuteglobal").style("opacity", newOpacity);
+  //   d3.selectAll("#acutemoderate").style("opacity", newOpacity);
+  //   d3.selectAll("#acutesevere").style("opacity", newOpacity);
+  //   // Update whether or not the elements are active
+  //   acuteglobal.active = active;
+  // })
+  // .text("Acute Malnutrition:")
+  // .append("svg:tspan")
+  // .attr("x", width - 150)             
+  // .attr("y", height - 30) 
+  // .attr("class","acuteglobal") 
+  // .text("Global")
+  // .append("svg:tspan")
+  // .attr("x", width - 150)             
+  // .attr("y", height - 15) 
+  // .attr("class","acutemoderate")
+  // .text("Moderate")
+  // .append("svg:tspan")
+  // .attr("x", width - 150)             
+  // .attr("y", height)  
+  // .attr("class","acutesevere")
+  // .text("Severe");
+
+  var borderPath = svg.append("rect")
+      .attr("x", 0)
+      .attr("y", 0)
+      .attr("height", height)
+      .attr("width", width)
+      .style("stroke", "#c0392b")
+      .style("fill", "none")
+      .style("stroke-width", "1");
+  // svg.append("svg:text")
+  //   .attr("x", width/2 - 550)
+  //   .attr("y", 200)
+  //   .attr("class", "title")
+  //   .style("fill","#000")
+  //   .style("font-size", "30px")
+  //   .text("Scaling Malnutrition to the DPRK");
+
+});
+
+</script>

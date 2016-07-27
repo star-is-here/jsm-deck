@@ -5,8 +5,8 @@
 
 path {
   fill: #c0392b;
-  stroke: #95a5a6;
-  stroke-width: .5px;
+  stroke: #e74c3c;
+  stroke-width: 2px;
 }
 
 path.link {
@@ -22,6 +22,10 @@ text {
   alignment-baseline: central;
 }
 
+#label {
+  stroke: #c0392b;
+}
+
 </style>
 <body>
 <!-- <script src="d3/d3.js"></script> -->
@@ -32,8 +36,9 @@ text {
 <script src="js/topojson.min.js"></script>
 <script>
 
-var width = 900,
-    height = 400;
+
+var width = 890,
+    height = 390;
 
 var projection = d3.geo.mercator();
 
@@ -45,6 +50,8 @@ var force = d3.layout.force().size([width, height]);
 var svg = d3.select("body").append("svg")
     .attr("width", width)
     .attr("height", height);
+
+function mapInit(){
 
 d3.json("dprktopo.json", function(error, dprk) {
 d3.json("dprk_mig_combined.json", function(error, mig) {
@@ -106,6 +113,8 @@ d3.json("dprk_mig_combined.json", function(error, mig) {
       .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
       .attr("d", function(d) { return path(d.feature); })
       .style("fill-opacity", function(d) { return (d.feature.properties.health-23)/23.5; })
+      .on("mouseover", labelchange)
+      .on("mouseout", labelrevert)
       .on("dblclick", dblclick);
 
   // build the arrow.
@@ -121,6 +130,7 @@ d3.json("dprk_mig_combined.json", function(error, mig) {
       .attr("orient", "auto")
     .append("svg:path")
       .attr("d", "M0,-5L10,0L0,5")
+      .style("stroke", "#3498db")
       .style("fill", "#3498db");
 
   var link = svg.append("svg:g").selectAll("path")
@@ -131,15 +141,28 @@ d3.json("dprk_mig_combined.json", function(error, mig) {
       .style("stroke-width", function(d) { return d.value/1000 +"px" });
 
 
-  var labels = svg.selectAll("text")
-    .data(nodes)
-  .enter().append("text")
-    .attr("dy", ".35em")
-    .text(function(d) { return ""; });
+  // var labels = svg.selectAll("text")
+  //   .data(nodes)
+  // .enter().append("text")
+  //   .attr("dy", "100px")
+  //   .text(function(d) { return ""; });
 
-  // var legend= svg.append("g")
-  //     .attr("class", "legend")
-  //     .append("rect")
+  var label = svg.append("text")
+    .attr("id", "label")
+    .attr("x", 10)
+    .attr("y", 20)
+    .style("text-anchor", "start")  
+    .style("font-size", "20px") 
+    .text("Province: Stunting Rate(%)");
+
+  var borderPath = svg.append("rect")
+      .attr("x", 0)
+      .attr("y", 0)
+      .attr("height", height)
+      .attr("width", width)
+      .style("stroke", "#c0392b")
+      .style("fill", "none")
+      .style("stroke-width", "1");
 
   // svg.append("svg:text")
   //   .attr("x", width/2 + 100)
@@ -176,9 +199,9 @@ d3.json("dprk_mig_combined.json", function(error, mig) {
       return "translate(" + d.x + "," + d.y + ")";
     });
 
-    labels.attr("transform", function(d) {
-      return "translate(" + d.x + "," + d.y + ")";
-    });
+    // labels.attr("transform", function(d) {
+    //   return "translate(" + d.x + "," + d.y + ")";
+    // });
   });
 
   function dragstart(d) {
@@ -189,8 +212,23 @@ d3.json("dprk_mig_combined.json", function(error, mig) {
     d3.select(this).classed("fixed", d.fixed = false);
   }
 
+  function labelchange(d) {
+    var change = d.feature.properties["name"] + ": " + d.feature.properties["health"] + "%";
+    d3.select("#label")
+      .text(change);
+  }
+
+  function labelrevert(d){
+    d3.select("#label")
+      .text("Province: Stunting Rate(%)")
+  }
+
+
 });
 });
 
+};
+
+mapInit();
 
 </script>

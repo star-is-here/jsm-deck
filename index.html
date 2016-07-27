@@ -611,7 +611,7 @@
 				<section data-state="prinDV">
 					<img src="img/prin1.png" width="90%">
 					<p><small>Figure: Visualization of medical costs, by Ben Fry of Seed Media Group, seen in “Information Visualization, Design, and the Arts: Collision or Collaboration” (Few, 2010)</small></p>
-					<ul>
+					<strong><small><ul>
 						<li>Few’s critiques:</li>
 						<ul>
 							<li>What do the radii mean?</li>
@@ -619,13 +619,13 @@
 							<li>What about the angles of the slices?</li>
 							<li>Trouble comparing radii and areas</li>
 						</ul>
-					</ul>
+					</ul></small></strong>
 				</section>
 				<section data-state="prin1">
 				<style>.prin1 header.left:after { content: "First Principle"; }</style>
 					<img src="img/prin2.jpg" width="90%">
 					<p><small>Figure: TB in the DPRK from “North Korea Tuberculosis”, TheGlobalEconomy.com</small></p>
-					<h3>Quantitative values should be displayed using the lengths of simple, two-dimensional objects.</h3>
+					<h5>Quantitative values should be displayed using the lengths of simple, two-dimensional objects.</h5>
 					<aside class="notes">
 						<ul>
 							<li>First, viewers can easily understand quantitative values if they are displayed using the lengths of simple, two-dimensional objects, such as bars.</li>
@@ -640,7 +640,7 @@
 				<style>.prin2 header.left:after { content: "Second Principle"; }</style>
 					<img src="img/prin3.jpg" width="75%">
 					<p><small>Figure: Snapshot of animation showing temperatures, 1880-2015, from bloomberg.com</small></p>
-					<h3>Viewers cannot see a pattern formed by multiple values if they only look at one value at a time. </h3>
+					<h5>Viewers cannot see a pattern formed by multiple values if they only look at one value at a time. </h5>
 					<aside class="notes">
 						<ul>
 							<li>Second, viewers cannot see a pattern formed by multiple values if they only look at one value at a time.</li>
@@ -660,7 +660,7 @@
 				<style>.prin3 header.left:after { content: "Third Principle"; }</style>
 					<img src="img/prin4.jpg" width="100%">
 					<p><small>Figure: Asylum applications,  April 2011 - August 2015, extracted from latimes.com</small></p>
-					<h3>Showing multiple graphs together can be better than showing a single graph.</h3>
+					<h5>Showing multiple graphs together can be better than showing a single graph.</h5>
 					<aside class="notes">
 						<ul>
 							<li>Second, viewers cannot see a pattern formed by multiple values if they only look at one value at a time.</li>
@@ -681,7 +681,7 @@
 				<style>.prin4 header.left:after { content: "Fourth Principle"; }</style>
 					<img src="img/prin5.jpg" width="70%">
 					<p><small>Figure: North Korea vs. South Korea, 2013,  from theguardian.com</small></p>
-					<h3>Viewers should be able to focus on data of interest.</h3>
+					<h5>Viewers should be able to focus on data of interest.</h5>
 					<aside class="notes">
 						<ul>
 							<li>Second, viewers cannot see a pattern formed by multiple values if they only look at one value at a time.</li>
@@ -700,7 +700,7 @@
 				</section>				
 				<section data-state="system1">
 				<style>.system1 header.left:after { content: "System One"; }</style>
-					<img src="img/system1.jpg" width="100%">
+					<img src="img/system1.jpg" width="70%">
 					<h3>What comes to mind when you glance at this picture?</h3>
 					<aside class="notes">
 						<ul>
@@ -1160,28 +1160,10 @@
 					</aside>
 				</section>
 				<section data-state="case4_force">
-				<style>.case4_force body{
-					background-image: url('img/forceMIG_opaque.png'); 
-					height: 100%; 
-					width: 100%;
-					background-repeat: no-repeat;
-					background-position: center;
-					} 
-					.case4_force header.left:after { content: "Case Example Data Visualization 4:"; }</style>
-					<h3>Policy implications</h3>
-					<ul>
-						<li>Jagang and Ryanggang have the highest prevalence of malnutrition.</li>
-						<li>These provinces have little migration, mainly migration to Pyongyang.</li>
-						<li>Citizens unable to migrate to avoid stunting?</li>
-					</ul>
-				</section>
-				<section data-state="case4_force">
+				<style>.case4_force header.left:after { content: "Case Example Data Visualization 4:"; }</style>
 					<h6>DPRK Net Migration vs. Global Chronic Malnutrition (Stunting)</h6>
 					<p><small>Net Migration Exceeding 1000</small></p>
 					<iframe src="iframe/force/dprkforce.html" width="900px" height="400px"></iframe>
-				</section>
-				<section data-state="case4_force">
-					<img src="img/forceMIG.jpg" width="100%">
 					<aside class="notes">
 						<ul>
 							<li>In the previous DV series, we mentioned that citizens of Ryanggang have the worst health conditions but appear immobile. We plotted global chronic malnutrition in children aged 24-59.9 months as a heat map.</li>
@@ -1191,24 +1173,21 @@
 						</ul>
 					</aside>
 				</section>
-				<section data-state="case4_scale">
-				<style>.case4_scale body{
-					background-image: url('img/scaleMAL_opaque.png'); 
-					height: 100%; 
-					width: 100%;
-					background-repeat: no-repeat;
-					background-position: center;
-					} 
-					.case4_scale header.left:after { content: "Case Example Data Visualization 4:"; }</style>
+				<section data-state="case4_force">
 					<h3>Policy implications</h3>
 					<ul>
-						<li>Each type of malnutrition takes up a considerable amount of the landmass in each province.</li>
-						<li>Global and moderate acute malnutrition show very little difference.</li>
-						<li>In order to tackle acute malnutrition, we must simultaneously face global and moderate cases</li>
+						<li>Jagang and Ryanggang have the highest prevalence of malnutrition.</li>
+						<li>These provinces have little migration, mainly migration to Pyongyang.</li>
+						<li>Citizens unable to migrate to avoid stunting?</li>
 					</ul>
 				</section>
+				<!-- <section data-state="case4_force">
+					<img src="img/forceMIG.jpg" width="100%">
+				</section> -->
 				<section data-state="case4_scale">
-					<img src="img/scaleMAL.jpg" width="100%">
+				<style>.case4_scale header.left:after { content: "Case Example Data Visualization 4:"; }</style>
+					<h6>Scaling Global Malnutrition to the DPRK</h6>
+					<iframe src="iframe/scale/scaleme.html" width="900px" height="400px"></iframe>					
 					<aside class="notes">
 						<ul>
 							<li>Malnutrition in children can have damaging long term consequences, as it affects the future generation of a nation. In the interactive visualization “Scaling Malnutrition to the DPRK”, we allow users to choose to display chronic or acute malnutrition (or both) on a map of the  DPRK.</li>
@@ -1219,6 +1198,17 @@
 						</ul>
 					</aside>
 				</section>
+				<section data-state="case4_scale">
+					<h3>Policy implications</h3>
+					<ul>
+						<li>Each type of malnutrition takes up a considerable amount of the landmass in each province.</li>
+						<li>Global and moderate acute malnutrition show very little difference.</li>
+						<li>In order to tackle acute malnutrition, we must simultaneously face global and moderate cases</li>
+					</ul>
+				</section>
+				<!-- <section data-state="case4_scale">
+					<img src="img/scaleMAL.jpg" width="100%">
+				</section> -->
 				<section data-state="case5">
 				<style>.case5 header.left:after { content: "Case Example Data Visualization 5:"; }</style>
 					<h2>Interactive DVs of Public Health Issues</h2>
