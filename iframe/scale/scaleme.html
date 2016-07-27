@@ -4,7 +4,7 @@
 <style>
 
 .land {
-  fill: #e74c3c;
+  fill: #c0392b;
   stroke: #ecf0f1;
   opacity: .5;
 }
@@ -34,8 +34,8 @@
 }
 
 .rescale {
-  fill: #c0392b;
-  stroke: #7f8c8d;
+  fill: #e74c3c;
+  stroke: #f1c40f;
   stroke-width: 1;
 }
 
@@ -412,15 +412,15 @@ d3.json("dprktopo.json", function(error, dprk) {
     d3.select("#legend_province")
       .text(title+" ("+pop+"):");
     d3.select("#legend_global")
-      .text(chronicGlobal+"%");
+      .text("Global Chronic Malnutrition: "+chronicGlobal+"%");
     d3.select("#legend_acuteglobal")
-      .text(acuteGlobal+"%");
+      .text("Global Acute Malnutrition: "+acuteGlobal+"%");
   };
 
   function popupout() {
     d3.select(this)
       .style("stroke", "#ecf0f1")
-      .style("fill", "#e74c3c");
+      .style("fill", "#c0392b");
     name = d3.select(this).datum().properties.fips;
     d3.select("#" + name + "_rescale")
       .style("opacity", 0);
