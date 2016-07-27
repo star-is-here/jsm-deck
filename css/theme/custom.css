@@ -85,6 +85,10 @@ body {
 .reveal em {
   font-style: italic; }
 
+.reveal li {
+   margin-bottom:20px;
+}
+
 .reveal ol,
 .reveal dl,
 .reveal ul {
