@@ -4,7 +4,7 @@
 <style>
 
 .land {
-  fill: #c0392b;
+  fill: #e74c3c;
   stroke: #ecf0f1;
   opacity: .5;
 }
@@ -420,7 +420,7 @@ d3.json("dprktopo.json", function(error, dprk) {
   function popupout() {
     d3.select(this)
       .style("stroke", "#ecf0f1")
-      .style("fill", "#c0392b");
+      .style("fill", "#e74c3c");
     name = d3.select(this).datum().properties.fips;
     d3.select("#" + name + "_rescale")
       .style("opacity", 0);
