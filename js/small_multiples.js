@@ -50,7 +50,7 @@ var stateLayer1 = L.geoJson(null, {
       fillOpacity: 1
      };
   },
-  onEachFeature: onEachFeature
+  onEachFeature: onEachFeature1
 });
 
 var stateLayer2 = L.geoJson(null, {
@@ -66,7 +66,7 @@ var stateLayer2 = L.geoJson(null, {
       fillOpacity: 1
      };
   },
-  onEachFeature: onEachFeature  
+  onEachFeature: onEachFeature2
 });
 
 var stateLayer3 = L.geoJson(null, {
@@ -82,7 +82,7 @@ var stateLayer3 = L.geoJson(null, {
       fillOpacity: 1
      };
   },
-  onEachFeature: onEachFeature
+  onEachFeature: onEachFeature3
 });
 
 var stateLayer4 = L.geoJson(null, {
@@ -98,7 +98,7 @@ var stateLayer4 = L.geoJson(null, {
       fillOpacity: 1
      };
   },
-  onEachFeature: onEachFeature
+  onEachFeature: onEachFeature4
 });
 omnivore.topojson('data/vector/countries_parity.geo.topojson', null, stateLayer1).addTo(map1);
 omnivore.topojson('data/vector/countries_parity.geo.topojson', null, stateLayer2).addTo(map2);
@@ -147,15 +147,54 @@ function highlightFeature(e) {
     info.update(layer.feature.properties);
 }
 
-function resetHighlight(e) {
+function resetHighlight1(e) {
     stateLayer1.resetStyle(e.target);
     info.update();
 }
 
-function onEachFeature(feature, layer) {
+function resetHighlight2(e) {
+    stateLayer2.resetStyle(e.target);
+    info.update();
+}
+
+function resetHighlight3(e) {
+    stateLayer3.resetStyle(e.target);
+    info.update();
+}
+
+function resetHighlight4(e) {
+    stateLayer4.resetStyle(e.target);
+    info.update();
+}
+
+function onEachFeature1(feature, layer) {
     layer.on({
         mouseover: highlightFeature,
-        mouseout: resetHighlight,
+        mouseout: resetHighlight1,
+        click: zoomToFeature
+    });
+}
+
+function onEachFeature2(feature, layer) {
+    layer.on({
+        mouseover: highlightFeature,
+        mouseout: resetHighlight2,
+        click: zoomToFeature
+    });
+}
+
+function onEachFeature3(feature, layer) {
+    layer.on({
+        mouseover: highlightFeature,
+        mouseout: resetHighlight3,
+        click: zoomToFeature
+    });
+}
+
+function onEachFeature4(feature, layer) {
+    layer.on({
+        mouseover: highlightFeature,
+        mouseout: resetHighlight4,
         click: zoomToFeature
     });
 }
@@ -171,7 +210,7 @@ info.onAdd = function (map) {
 // method that we will use to update the control based on feature properties passed
 info.update = function (d) {
     this._div.innerHTML =(d ?
-        '<b>' + d.name + '</b><br />' + '2009: ' + d.parity1 + '<br />2010: ' + d.parity2 + '<br />2010: ' + d.parity3 + '<br />2010: ' + d.parity4
+        '<b>' + d.name + '</b><br />' + '2009: ' + d.parity1 + '<br />2010: ' + d.parity2 + '<br />2011: ' + d.parity3 + '<br />2012: ' + d.parity4
         : 'Hover over a nation<br />for Gender Parity Index');
 };
 
