@@ -168,6 +168,20 @@ def clip_and_pull_dmsp(vname, rname, dumpJSON=False, view=False):
 
     return planet
 
+def chkcntry(cntry, cntrylist, stoplist = False):
+    with open('data/swapnation.json', 'r') as f:
+        swapnation = json.load(f)
+    with open('data/ignorenation.json', 'r') as f:
+        ignorenation = json.load(f)
+    if cntry in swapnation.keys():
+        return swapnation[cntry]
+    elif cntry not in ignorenation:
+        dist = [ editdistance.eval(cntry, x) for x in cntrylist ]
+        suggestion = [ cntrylist[i] for i,x in enumerate(dist) if x == min(dist) ]
+        return suggestion[0]
+    else:
+        return None
+
 if __name__=='__main__':
     ########################################################################################################################
     # Define nations and admin levels
@@ -269,8 +283,6 @@ if __name__=='__main__':
     ########################################################################################################################
     with open('data/dmsp_timeseries.json', 'r') as f:
         dmsp = json.load(f)
-    for year in dmsp.keys():
-        for 
     # dmsp_flat = []
     # for year in dmsp.keys():
     #     nation_dict = {}
@@ -283,9 +295,15 @@ if __name__=='__main__':
     #     dmsp_flat.extend([ [year, x, y] for x, y in nation_dict.items() ])
     # nations = list(set([ x[1] for x in dmsp_flat]))
     # pp.pprint(nations)
+    cntrylist = []
     with open('data/MDG_Export_cleaned.csv', 'r') as f:
         table = csv.reader(f)
         for i, row in enumerate(table):
             if i == 0:
                 varname = row
+                print(row)
             else:
+                cntrylist.append(row[1])
+    cntrylist = list(set(cntrylist))
+    for nation in dmsp[dmsp.keys()[0]]:
+        print(chkcntry(nation['name'], cntrylist))

@@ -35,7 +35,7 @@
 
 .rescale {
   fill: #e74c3c;
-  stroke: #f1c40f;
+  stroke: #2c3e50;
   stroke-width: 2;
 }
 
@@ -395,13 +395,13 @@ d3.json("dprktopo.json", function(error, dprk) {
   //     .style("z-index", -10);
 
   function popup() {
-    d3.select(this)
+    d3.selectAll(".land")
       .style("stroke", "#bdc3c7")
       .style("fill", "#ecf0f1");
     name = d3.select(this).datum().properties.fips,
     title = d3.select(this).datum().properties.name,
-    pop = d3.select(this).datum().properties.health["popnum"]
-    chronicGlobal = d3.select(this).datum().properties.health["global"]
+    pop = d3.select(this).datum().properties.health["popnum"],
+    chronicGlobal = d3.select(this).datum().properties.health["global"],
     acuteGlobal = d3.select(this).datum().properties.health["acute-global"];
     d3.select("#" + name + "_rescale")
       .style("opacity", 1);
@@ -418,7 +418,7 @@ d3.json("dprktopo.json", function(error, dprk) {
   };
 
   function popupout() {
-    d3.select(this)
+    d3.selectAll(".land")
       .style("stroke", "#ecf0f1")
       .style("fill", "#c0392b");
     name = d3.select(this).datum().properties.fips;

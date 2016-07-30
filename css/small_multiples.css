@@ -1,7 +1,17 @@
-<style type="text/css">
-    #map1, #map2, #map3, #map4 { width: 49.5%; height: 49.5%; }
-    #map1 { position: absolute; left: 0; top: 0; }
-    #map2 { position: absolute; right: 0%; top: 0; }
-    #map3 { position: absolute; left: 0; bottom: 0%; }
-    #map4 { position: absolute; right: 0%; bottom: 0%; }
-</style>
+#map1, #map2, #map3, #map4 { width: 49.5%; height: 49.5%; }
+#map1 { position: absolute; left: 0; top: 0; }
+#map2 { position: absolute; right: 0%; top: 0; }
+#map3 { position: absolute; left: 0; bottom: 0%; }
+#map4 { position: absolute; right: 0%; bottom: 0%; }
+.info {
+    padding: 6px 8px;
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    background: white;
+    background: rgba(255,255,255,0.8);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+.info h4 {
+    margin: 0 0 5px;
+    color: #777;
+}
