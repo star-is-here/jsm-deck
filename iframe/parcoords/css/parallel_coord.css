@@ -1,0 +1,35 @@
+#coord svg {
+  font: 10px sans-serif;
+}
+
+.background path {
+  fill: none;
+  stroke: #bdc3c7;
+  shape-rendering: crispEdges;
+}
+
+.foreground path {
+  fill: none;
+  stroke: #c0392b;
+}
+
+.brush .extent {
+  fill-opacity: .3;
+  stroke: #fff;
+  shape-rendering: crispEdges;
+}
+
+.axis line,
+.axis path {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.axis text {
+  text-shadow: 0 1px 0 #bdc3c7, 1px 0 0 #bdc3c7, 0 -1px 0 #bdc3c7, -1px 0 0 #bdc3c7;
+}
+
+/*.axis + .axis g text {
+  display: none;
+}*/

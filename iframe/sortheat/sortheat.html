@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+body {
+  font-family: Helvetica, sans-serif;
+}
+svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.control, #seriesname {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 20px;
+  color: #c0392b;
+}
+
+</style>
+<body>
+<span class="control">Sort by
+<a href="#" class="sort-btn" data-sort="id">Series</a> /
+<a href="#" class="sort-btn" data-sort="size">Correlation Coefficent</a></span>
+<p id="seriesname">Series: Correlation coefficient</p>
+<script src="js/d3.min.js"></script>
+<script src="js/d3-grid.js"></script>
+<script src="js/d3-comparator.js"></script>
+<script>
+
+var width = 890,
+    height = 490;
+
+var grid = d3.layout.grid()
+  .size([800, 350]);
+
+var color = d3.scale.linear()
+  .interpolate(d3.interpolateRgb)
+  .domain([0, 5])
+  .range(["rgb(52, 152, 219)", "rgb(192, 57, 43)"]);
+
+var size = d3.scale.sqrt()
+  .domain([0, 9])
+  .range([0, 15]);
+
+var sortBy = {
+  id: d3.comparator()
+    .order(d3.ascending, function(d) { return d.id; }),
+  color: d3.comparator()
+    .order(d3.ascending, function(d) { return d.color; })
+    .order(d3.descending, function(d) { return d.size; })
+    .order(d3.ascending, function(d) { return d.id; }),
+  size: d3.comparator()
+    .order(d3.descending, function(d) { return d.size; })
+    .order(d3.ascending, function(d) { return d.color; })
+    .order(d3.ascending, function(d) { return d.id; })
+};
+
+// var data = d3.range(128).map(function(d) { 
+//   return {
+//     id: d,
+//     size: 1 + Math.floor(Math.random() * 9),
+//     color: Math.floor(Math.random() * 10)
+//   }; 
+// });
+
+var svg = d3.select("body").append("svg")
+  .attr({
+    width: width,
+    height: height
+  })
+.append("g")
+  .attr("transform", "translate(20,120)");
+
+// var label = svg.append("text")
+//   .attr("class", "label")
+//   .attr("id", "seriesname")
+//   .attr('x', width)
+//   .attr('y', -30)
+//   .style('text-anchor', 'end')
+//   .style('fill', '#c0392b')
+//   .text('Series: CorrCoeff')
+
+d3.json('seriesCorr.json', function(corr){
+
+var data = d3.range(corr.length).map(function(d) {
+  return {
+    id: parseInt(corr[d].series),
+    size: Math.floor(Math.abs(corr[d].value) * 10) + 1,
+    color: Math.floor(Math.abs(corr[d].value) * 10),
+    value: corr[d].value,
+    name: corr[d].name
+  };
+});
+
+d3.selectAll(".sort-btn")
+  .on("click", function(d) {
+    d3.event.preventDefault();
+    data.sort(sortBy[this.dataset.sort]);
+    update();
+  });
+
+update();
+
+function update() {
+  var node = svg.selectAll(".node")
+    .data(grid(data), function(d) { return d.id; });
+  node.enter().append("circle")
+    .on("mouseover", updateName)
+    .on("mouseout", resetName)
+    .attr("class", "node")
+    .attr("r", 1e-9)
+    .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
+    .style("fill", function(d) { return color(d.color); });
+  node.transition().duration(1000).delay(function(d, i) { return i * 20; })
+    .attr("r", function(d) { return size(d.size); })
+    .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+  node.exit().transition()
+    .attr("r", 1e-9)
+    .remove();
+};
+
+function updateName() {
+  name = d3.select(this).datum().name,
+  value = d3.select(this).datum().value;
+  d3.select("body").select("#seriesname")
+    .text(name+': ' + value);
+};
+
+function resetName() {
+  d3.select("body").select("#seriesname")
+    .text('Series: Correlation coefficient');
+}
+
+// function update() {
+//   var node = svg.selectAll(".node")
+//     .data(grid(data), function(d) { return d.id; });
+//   node.enter().append("rect")
+//     .attr("class", "node")
+//     .attr("width", 1e-9)
+//     .attr("height", 1e-9)
+//     .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
+//     .style("fill", function(d) { return color(d.color); });
+//   node.transition().duration(1000).delay(function(d, i) { return i * 20; })
+//     .attr("width", function(d) { return size(d.size); })
+//     .attr("height", function(d) { return size(d.size); })
+//     .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+//   node.exit().transition()
+//     .attr("r", 1e-9)
+//     .remove();
+// };
+
+});
+
+</script>

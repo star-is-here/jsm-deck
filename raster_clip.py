@@ -182,6 +182,20 @@ def chkcntry(cntry, cntrylist, stoplist = False):
     else:
         return None
 
+def correlateSeries(series1, series2):
+    # Remove missing
+    clean = [[],[]]
+    for i in range(len(series1)):
+        if series1[i] != None and series2[i] != None:
+            clean[0].append(series1[i])
+            clean[1].append(series2[i])
+    if len(clean[0]) != 0:
+        # return np.corrcoef(np.log(clean[0]), clean[1])[0][1]
+        return np.corrcoef(clean[0], clean[1])[0][1]
+    else:
+        return None
+
+
 if __name__=='__main__':
     ########################################################################################################################
     # Define nations and admin levels
@@ -281,10 +295,32 @@ if __name__=='__main__':
     ########################################################################################################################
     # Process DMSP and MDG
     ########################################################################################################################
-    with open('data/dmsp_timeseries.json', 'r') as f:
-        dmsp = json.load(f)
-    # dmsp_flat = []
-    # for year in dmsp.keys():
+    # with open('data/dmsp_timeseries.json', 'r') as f:
+    #     dmsp = json.load(f)
+    # cntrylist = []
+    # with open('data/MDG_Export_cleaned.csv', 'r') as f:
+    #     table = csv.reader(f)
+    #     for i, row in enumerate(table):
+    #         if i == 0:
+    #             varname = row
+    #             years = { x:i for i,x in enumerate(row[5:]) } 
+    #             mdgdict = { x:{} for x in years.keys() }
+    #         else:
+    #             for year, i in years.items():
+    #                 try:
+    #                     ind = float(row[i+5])
+    #                 except ValueError:
+    #                     ind = None
+    #                 try:
+    #                     mdgdict[year][row[1]][row[2]] = ind
+    #                 except KeyError:
+    #                     try:                 
+    #                         mdgdict[year][row[1]] = {row[2]:ind}
+    #                     except KeyError:
+    #                         mdgdict[year] = {row[1]: {row[2]:ind}}
+    #             cntrylist.append(row[1])
+    # cntrylist = list(set(cntrylist))
+    # for year in tqdm(dmsp.keys()):
     #     nation_dict = {}
     #     for nation in dmsp[year]:
     #         try:
@@ -292,18 +328,59 @@ if __name__=='__main__':
     #             nation_dict[nation['name']] / 2 
     #         except KeyError:
     #             nation_dict[nation['name']] = nation['mean']
-    #     dmsp_flat.extend([ [year, x, y] for x, y in nation_dict.items() ])
-    # nations = list(set([ x[1] for x in dmsp_flat]))
-    # pp.pprint(nations)
-    cntrylist = []
-    with open('data/MDG_Export_cleaned.csv', 'r') as f:
+    #     for nationNm in nation_dict.keys():
+    #         if chkcntry(nationNm, cntrylist) != None:
+    #             mdgdict[year][chkcntry(nationNm, cntrylist)]['dmsp'] = nation_dict[nationNm]
+    # with open('data/dmspMDG.json', 'w') as f:
+    #     json.dump(mdgdict, f)
+    # dmspMDGFlat = []
+    # header = ['year', 'nation'] + [ x[0] for x in sorted(mdgdict['1999']['Zimbabwe'].items(), key=lambda y: y[0]) ]
+    # dmspMDGFlat.append(header)
+    # for year in mdgdict.keys():
+    #     for nation in mdgdict[year].keys():
+    #         if 'dmsp' in mdgdict[year][nation].keys():
+    #             dmspMDGFlat.append([year, nation] + [ x[1] for x in sorted(mdgdict[year][nation].items(), key=lambda y: y[0]) ])
+    # with open('data/dmspMDG.csv', 'w') as f:
+    #     write = csv.writer(f)
+    #     for line in dmspMDGFlat:
+    #         write.writerow(line)
+    ########################################################################################################################
+    # Load DMSP and MDG and run correlation
+    ########################################################################################################################
+    # with open('data/dmspMDG.csv', 'r') as f:
+    #     table = csv.reader(f)
+    #     for i, row in enumerate(table):
+    #         if i == 0:
+    #             header = row[2:]
+    #             correlate = { x:[] for x in row[2:] }
+    #         else:
+    #             for i, series in enumerate(header):
+    #                 try:
+    #                     addme = float(row[i])
+    #                 except ValueError:
+    #                     addme = None
+    #                 correlate[series].append(addme)
+    # # for series in correlate.keys():
+    # #     if series != 'dmsp':
+    # #         print(correlateSeries(correlate['dmsp'], correlate[series]))
+    # corrSeq = { x:correlateSeries(correlate['dmsp'], correlate[x]) for x in correlate.keys() if x != 'dmsp' and correlateSeries(correlate['dmsp'], correlate[x]) != None }
+    # with open('data/seriesName.json', 'r') as f:
+    #     seriesName = json.load(f)
+    # # print(np.mean(corrSeq.values()))
+    # # for series in sorted(corrSeq.items(), key=lambda x: abs(x[1]), reverse=True)[:50]:
+    # #     print(series[1], seriesName[series[0]])
+    # with open('iframe/sortheat/seriesCorr.json', 'w') as f:
+    #     json.dump([ {'series':x[0], 'name':seriesName[x[0]], 'value':x[1]} for x in sorted(corrSeq.items(), key=lambda x: x[0]) ], f)
+    ########################################################################################################################
+    # Load DMSP and MDG and run correlation
+    ########################################################################################################################
+    mdg611 = []
+    with open('data/MDG611_clean2.csv', 'r') as f:
         table = csv.reader(f)
         for i, row in enumerate(table):
             if i == 0:
-                varname = row
-                print(row)
+                header = row
             else:
-                cntrylist.append(row[1])
-    cntrylist = list(set(cntrylist))
-    for nation in dmsp[dmsp.keys()[0]]:
-        print(chkcntry(nation['name'], cntrylist))
+                mdg611.append({ header[j]:row[j] for j,x in enumerate(row) })
+    with open('data/MDG611.json', 'w') as f:
+        json.dump(mdg611, f)

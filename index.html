@@ -9,7 +9,8 @@
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/custom.css">
 		<link rel="stylesheet" type="text/css" href="js/leaflet/leaflet.css">
-		<link rel="stylesheet" type="text/css" href="css/parallel_coord.css">
+		<!-- <link rel="stylesheet" type="text/css" href="css/parallel_coord.css"> -->
+		<!-- <link rel="stylesheet" type="text/css" href="css/d3.parcoords.css"> -->
 		<link rel="stylesheet" type="text/css" href="css/small_multiples.css">
 
 		<!-- Theme used for syntax highlighting of code -->
@@ -26,6 +27,7 @@
 
 		<script src="js/d3.min.js"></script>
 		<script src="js/dygraph-combined.js"></script>
+		<!-- <script src="js/d3.parcoords.js"></script> -->
 		<script src="js/jquery-3.0.0.min.js"></script>
 		<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script> -->
 		<!-- <script src="https://code.jquery.com/jquery-3.0.0.min.js" integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0=" crossorigin="anonymous"></script> -->
@@ -1082,29 +1084,17 @@
 				</section>
 				<section data-state="case7">
 				<style>.case7 header.left:after { content: "Case Example Data Visualization 7:"; }</style>
-					<h2>Visualizing</h2>
+					<h2>Visualizing Extensions to Social and Educational Indicators</h2>
 					<h4>Star Ying</h4>
 				</section>
 				<section data-state="situation">
 				<style>.situation header.left:after { content: "MDGs of Social and Education Issues"; }</style>
 					<h5>Gender Parity Index in primary level enrolment</h5>
-					<div id="coord"></div>
-					<script src="js/parallel_coord.js"></script>
-				</section>
-				<section data-state="situation">
-					<ul>
-						<li>We can see the upward trend of primary level enrolment</li>
-						<li>Only capture if a nation is succeeding or failing, not suggest policy interventions that may help or where to help</li>
-					</ul>
+					<iframe src="iframe/parcoords/parcoords.html" style="width:900px; height:500px;"></iframe>
 				</section>
 				<section data-state="situation">
 					<h5>Gender Parity Index in primary level enrolment (2009-2012)</h5>
 					<iframe src="small_multiples.html" style="width:900px; height:500px;"></iframe>
-				</section>
-				<section data-state="situation">
-					<p>There is a lot of missing data, even for well established indicators/indexes</p>
-					<p>Especially in the social and education arena</p>
-					<p>Also very costly to create</p>
 				</section>
 				<section data-state="header36">
 				<style>.header36 header.left:after { content: "Potential alternatives"; }</style>
@@ -1132,7 +1122,8 @@
 				</section>
 				<section data-state="header37">
 					<p>Monthly Average Radiance Levels of various Asian Nations from 2014 to present</p>
-					<div id="timeseries" style="width:900px; height:300px; text-align:center"></div>
+					<div id="timeseries" style="width:900px; height:500px; text-align:center"></div>
+					<div id="timeseries_asia" style="width:900px; font-size:18px; text-align:center;"></div>
 					<script type="text/javascript">
 					  g2 = new Dygraph(
 					    document.getElementById("timeseries"),
@@ -1152,6 +1143,7 @@
 					    		'vietnam': {color: '#9b59b6'}
 					    	},
 				            legend: 'always',
+				            labelsDiv: document.getElementById("timeseries_asia"),
 				            labelsDivStyles: { 'textAlign': 'right' },
 				            showRangeSelector: true,
 				            rangeSelectorHeight: 30,
@@ -1161,14 +1153,14 @@
 					    }          // options
 					  );
 					  $(document).ready(function () { 
-					        g2.resize(900, 300)
+					        g2.resize(900, 500)
 					    }); // Get the graph to appear
 					</script>
 				</section>
 				<section data-state="header37">
-					<p>Monthly Average Radiance Levels of North Korean Provinces from 2014 to present</p>
-					<div id="timeseries_nk" style="width:900px; height:300px; text-align:center"></div>
-					<div id="timeseries_nk_legend" style="width:900px; font-size:18px;"></div>
+					<p>Monthly Average Radiance Levels of North Korean Provinces from 2014 to present (tenths of radiance)</p>
+					<div id="timeseries_nk" style="width:900px; height:500px; text-align:center"></div>
+					<div id="timeseries_nk_legend" style="width:900px; font-size:18px; text-align:center;"></div>
 					<script type="text/javascript">
 					  g3 = new Dygraph(
 					    document.getElementById("timeseries_nk"),
@@ -1177,7 +1169,6 @@
 					    	rollPeriod: 2,
 				            legend: 'always',
 				            labelsDiv: document.getElementById("timeseries_nk_legend"),
-				            labelsDivStyles: { 'textAlign': 'right' },
 				            showRangeSelector: true,
 				            rangeSelectorHeight: 30,
 				            rangeSelectorPlotStrokeColor: '#2c3e50',
@@ -1186,14 +1177,14 @@
 					    }          // options
 					  );
 					  $(document).ready(function () { 
-					        g3.resize(900, 300)
+					        g3.resize(900, 500)
 					    }); // Get the graph to appear
 					</script>
 				</section>
 				<section data-state="header37">
 					<p>Monthly Average Radiance Levels of the Korean Peninsula Provinces from 2014 to present</p>
-					<div id="timeseries_kor" style="width:900px; height:300px; text-align:center"></div>
-					<div id="timeseries_kor_legend" style="width:900px; font-size:12px;"></div>
+					<div id="timeseries_kor" style="width:900px; height:500px; text-align:center"></div>
+					<div id="timeseries_kor_legend" style="width:900px; font-size:12px; text-align:center;"></div>
 					<script type="text/javascript">
 					  g4 = new Dygraph(
 					    document.getElementById("timeseries_kor"),
@@ -1202,7 +1193,6 @@
 					    	rollPeriod: 2,
 				            legend: 'always',
 				            labelsDiv: document.getElementById("timeseries_kor_legend"),
-				            labelsDivStyles: { 'textAlign': 'right' },
 				            showRangeSelector: true,
 				            rangeSelectorHeight: 30,
 				            rangeSelectorPlotStrokeColor: '#2c3e50',
@@ -1211,15 +1201,26 @@
 					    }          // options
 					  );
 					  $(document).ready(function () { 
-					        g4.resize(900, 300)
+					        g4.resize(900, 500)
 					    }); // Get the graph to appear
 					</script>
 				</section>
-				<section data-state="header37">
+				<section data-state="star_dmsp">
+				<style>.star_dmsp header.left:after { content: "DMSP vs MDG Indicators"; }</style>
+					<iframe src="iframe/sortheat/sortheat.html" width="900px" height="500px" style="margin-top:50px;"></iframe>	
+					<p><small><a href="data/dmspMDG.csv">Download Dataset</a></small></p>									
+				</section>
+				<section data-state="star_con">
+				<style>.star_con header.left:after { content: "Implications"; }</style>
 					<ul>
 						<li>Visualizations/dashboarding is useful for policy but it is limited by the strength of the underlying data used</li>
-						<li><strong>Especially</strong> in the arena of social or education issues which can be so costly</li>
+						<li>There is potential to extend existing indicators with alternative data sources</li>
+						<li>Further study is required</li>
 					</ul>
+				</section>
+				<section data-state="conclusion_title">
+				<style>.conclusion_title header.left:after { content: ""; }</style>
+					<h1>Conclusions</h1>
 				</section>
 				<section data-state="conclusion">
 				<style>.conclusion header.left:after { content: "Conclusions"; }</style>
