@@ -22,8 +22,9 @@ svg {
 <body>
 <span class="control">Sort by
 <a href="#" class="sort-btn" data-sort="id">Series</a> /
-<a href="#" class="sort-btn" data-sort="size">Correlation Coefficent</a></span>
-<p id="seriesname">Series: Correlation coefficient</p>
+<a href="#" class="sort-btn" data-sort="absvalue">Absolute Correlation Coefficent</a> / 
+<a href="#" class="sort-btn" data-sort="value">Correlation Coefficent</a></span>
+<p id="seriesname" style="font-size:15px;">Series: Correlation coefficient</p>
 <script src="js/d3.min.js"></script>
 <script src="js/d3-grid.js"></script>
 <script src="js/d3-comparator.js"></script>
@@ -54,6 +55,14 @@ var sortBy = {
   size: d3.comparator()
     .order(d3.descending, function(d) { return d.size; })
     .order(d3.ascending, function(d) { return d.color; })
+    .order(d3.ascending, function(d) { return d.id; }),
+  value: d3.comparator()
+    .order(d3.descending, function(d) { return d.value; })
+    .order(d3.ascending, function(d) { return d.size; })
+    .order(d3.ascending, function(d) { return d.id; }),
+  absvalue: d3.comparator()
+    .order(d3.descending, function(d) { return d.absvalue; })
+    .order(d3.ascending, function(d) { return d.size; })
     .order(d3.ascending, function(d) { return d.id; })
 };
 
@@ -90,6 +99,7 @@ var data = d3.range(corr.length).map(function(d) {
     size: Math.floor(Math.abs(corr[d].value) * 10) + 1,
     color: Math.floor(Math.abs(corr[d].value) * 10),
     value: corr[d].value,
+    absvalue: Math.abs(corr[d].value),
     name: corr[d].name
   };
 });
@@ -122,10 +132,11 @@ function update() {
 };
 
 function updateName() {
+  id = d3.select(this).datum().id,
   name = d3.select(this).datum().name,
   value = d3.select(this).datum().value;
   d3.select("body").select("#seriesname")
-    .text(name+': ' + value);
+    .text(id+' - '+name+': ' + value);
 };
 
 function resetName() {

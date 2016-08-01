@@ -347,40 +347,39 @@ if __name__=='__main__':
     ########################################################################################################################
     # Load DMSP and MDG and run correlation
     ########################################################################################################################
-    # with open('data/dmspMDG.csv', 'r') as f:
-    #     table = csv.reader(f)
-    #     for i, row in enumerate(table):
-    #         if i == 0:
-    #             header = row[2:]
-    #             correlate = { x:[] for x in row[2:] }
-    #         else:
-    #             for i, series in enumerate(header):
-    #                 try:
-    #                     addme = float(row[i])
-    #                 except ValueError:
-    #                     addme = None
-    #                 correlate[series].append(addme)
-    # # for series in correlate.keys():
-    # #     if series != 'dmsp':
-    # #         print(correlateSeries(correlate['dmsp'], correlate[series]))
-    # corrSeq = { x:correlateSeries(correlate['dmsp'], correlate[x]) for x in correlate.keys() if x != 'dmsp' and correlateSeries(correlate['dmsp'], correlate[x]) != None }
-    # with open('data/seriesName.json', 'r') as f:
-    #     seriesName = json.load(f)
-    # # print(np.mean(corrSeq.values()))
-    # # for series in sorted(corrSeq.items(), key=lambda x: abs(x[1]), reverse=True)[:50]:
-    # #     print(series[1], seriesName[series[0]])
-    # with open('iframe/sortheat/seriesCorr.json', 'w') as f:
-    #     json.dump([ {'series':x[0], 'name':seriesName[x[0]], 'value':x[1]} for x in sorted(corrSeq.items(), key=lambda x: x[0]) ], f)
-    ########################################################################################################################
-    # Load DMSP and MDG and run correlation
-    ########################################################################################################################
-    mdg611 = []
-    with open('data/MDG611_clean2.csv', 'r') as f:
+    with open('data/dmspMDG.csv', 'r') as f:
         table = csv.reader(f)
         for i, row in enumerate(table):
             if i == 0:
-                header = row
+                header = row[2:]
+                correlate = { x:[] for x in row[2:] }
             else:
-                mdg611.append({ header[j]:row[j] for j,x in enumerate(row) })
-    with open('data/MDG611.json', 'w') as f:
-        json.dump(mdg611, f)
+                for i, series in enumerate(header):
+                    try:
+                        addme = float(row[i])
+                    except ValueError:
+                        addme = None
+                    correlate[series].append(addme)
+    # for series in correlate.keys():
+    #     if series != 'dmsp':
+    #         print(correlateSeries(correlate['dmsp'], correlate[series]))
+    corrSeq = { x:correlateSeries(correlate['dmsp'], correlate[x]) for x in correlate.keys() if x != 'dmsp' and correlateSeries(correlate['dmsp'], correlate[x]) != None }
+    with open('data/seriesName.json', 'r') as f:
+        seriesName = json.load(f)
+    # print(np.mean(corrSeq.values()))
+    # for series in sorted(corrSeq.items(), key=lambda x: abs(x[1]), reverse=True)[:50]:
+    #     print(series[1], seriesName[series[0]])
+    with open('iframe/sortheat/seriesCorr.json', 'w') as f:
+        json.dump([ {'series':x[0], 'name':seriesName[x[0]], 'value':x[1]} for x in sorted(corrSeq.items(), key=lambda x: x[0]) ], f)
+    ########################################################################################################################
+    # MDG 611 correlation
+    ########################################################################################################################
+    # mdg611 = []
+    # with open('data/MDG611_clean2.csv', 'r') as f:
+    #     table = csv.reader(f)
+    #     for i, row in enumerate(table):
+    #         if i == 0:
+    #             header = row
+    #             mdg611.append({ header[j]:row[j] for j,x in enumerate(row) })
+    # with open('data/MDG611.json', 'w') as f:
+    #     json.dump(mdg611, f)
