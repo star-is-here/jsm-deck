@@ -196,7 +196,7 @@ d3.json("MDG611.json", function(data) {
     .hideAxis(["Country", "developed", "2014", "2015", "2016"])
     .composite("source-over")
     .color(function(d) { return blue_to_red(parseInt(d['developed'])); })  // quantitative color scale
-    // .alpha(0.35)
+    .alpha(0.35)
     .dimensions(dimensions)
     .render()
     .brushMode("1D-axes");
